@@ -18,7 +18,7 @@ const PORT = 3000;
 app.use(express.json({ limit: '10mb' }));
 
 // File storage persistence setup
-const DATA_DIR = path.join(process.cwd(), 'data');
+const DATA_DIR = path.join(process.cwd(), '.data');
 const DB_FILE = path.join(DATA_DIR, 'db.json');
 
 interface LocalDB {
@@ -210,9 +210,8 @@ app.get('/api/articles/:slugOrId', (req, res) => {
     return res.status(404).json({ error: 'Article not found' });
   }
 
-  // Increment view
+  // Increment view in memory
   db.articles[articleIndex].views += 1;
-  saveDB(db);
 
   res.json(db.articles[articleIndex]);
 });
