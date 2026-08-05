@@ -1,0 +1,6 @@
+{
+  "name": "TechPulse SEO Blog Platform",
+  "description": "A professional, AdSense-compliant tech & AI publishing platform with SEO schema, Markdown rendering, Admin CMS dashboard, RSS feeds, and XML sitemaps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
