@@ -43,7 +43,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate, articles
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="Search TechPulse articles..."
+            placeholder="Search EarnInfo articles..."
             className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />

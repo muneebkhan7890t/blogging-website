@@ -72,11 +72,11 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1.5 text-indigo-400 font-medium">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>TechPulse Media</span>
+            <span>EarnInfo Media</span>
           </span>
           <span className="hidden md:inline text-slate-600">•</span>
           <span className="hidden md:inline text-slate-400">
-            Independent AI, Cloud &amp; Software Engineering Journal
+            Digital Publishing, Online Income &amp; Technology Hub
           </span>
         </div>
         <div className="flex items-center gap-4 text-slate-400">
@@ -115,15 +115,15 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center gap-2.5 text-left group"
               id="brand-logo"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-                TP
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-600 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                EI
               </div>
               <div>
-                <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-800 dark:from-white dark:via-indigo-200 dark:to-slate-200 bg-clip-text text-transparent">
-                  TechPulse
+                <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-emerald-950 to-indigo-950 dark:from-white dark:via-emerald-200 dark:to-indigo-200 bg-clip-text text-transparent">
+                  EarnInfo
                 </span>
-                <span className="text-[10px] block font-semibold text-indigo-600 dark:text-indigo-400 tracking-wider uppercase -mt-1">
-                  AI &amp; Tech Media
+                <span className="text-[10px] block font-semibold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase -mt-1">
+                  Earn Money &amp; Tech Guides
                 </span>
               </div>
             </button>

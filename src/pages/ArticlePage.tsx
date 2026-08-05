@@ -59,7 +59,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
           const comms = await api.getArticleComments(fetched.id);
           setComments(comms);
           // Set page title for browser tab
-          document.title = `${fetched.metaTitle || fetched.title} | TechPulse`;
+          document.title = `${fetched.metaTitle || fetched.title} | EarnInfo`;
         }
       } catch (err: any) {
         if (isMounted) {

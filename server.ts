@@ -522,7 +522,7 @@ Respond with a JSON object containing:
 
 // Sitemap XML endpoint
 app.get('/sitemap.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://techpulse-blog.com';
+  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
   
   const staticPages = [
     '',
@@ -579,12 +579,12 @@ app.get('/sitemap.xml', (req, res) => {
 
 // RSS Feed endpoint
 app.get('/rss.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://techpulse-blog.com';
+  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
 
   let rss = `<?xml version="1.0" encoding="UTF-8" ?>\n`;
   rss += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
   rss += `<channel>\n`;
-  rss += `  <title>TechPulse - Modern Tech &amp; AI Publishing</title>\n`;
+  rss += `  <title>EarnInfo - Digital Guides, Online Income &amp; Tech</title>\n`;
   rss += `  <link>${baseUrl}</link>\n`;
   rss += `  <description>In-depth coverage of Artificial Intelligence, Software Engineering, Cybersecurity, and Cloud Architecture.</description>\n`;
   rss += `  <language>en-us</language>\n`;

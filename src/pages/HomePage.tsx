@@ -57,7 +57,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </h1>
             </div>
             <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-900/60 text-indigo-300 border border-indigo-700">
-              TechPulse Lead Edition
+              EarnInfo Lead Edition
             </span>
           </div>
 

@@ -1,6 +1,6 @@
 {
-  "name": "TechPulse SEO Blog Platform",
-  "description": "A professional, AdSense-compliant tech & AI publishing platform with SEO schema, Markdown rendering, Admin CMS dashboard, RSS feeds, and XML sitemaps.",
+  "name": "EarnInfo - Digital Publishing & Guides",
+  "description": "EarnInfo is an authoritative digital publication covering online income strategies, technology, cybersecurity, software engineering, and digital guides.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

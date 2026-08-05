@@ -99,15 +99,15 @@ export const Footer: React.FC<FooterProps> = ({ categories, onNavigate }) => {
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
-                TP
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-md">
+                EI
               </div>
               <span className="text-xl font-extrabold tracking-tight text-white">
-                TechPulse
+                EarnInfo
               </span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              TechPulse is an independent digital publication committed to delivering rigorous, high-authority reporting on Artificial Intelligence, developer ecosystems, cloud architecture, and cybersecurity.
+              EarnInfo is an independent digital publication committed to delivering actionable guides on earning money online, freelancing, micro-SaaS, Artificial Intelligence, and technology trends.
             </p>
 
             <div className="space-y-1.5 text-xs text-slate-400 pt-1">
@@ -251,7 +251,7 @@ export const Footer: React.FC<FooterProps> = ({ categories, onNavigate }) => {
       {/* Copyright & AdSense Compliance Strip */}
       <div className="bg-slate-950 py-6 border-t border-slate-800 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} TechPulse Media Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} EarnInfo Media Inc. All rights reserved.</p>
           <div className="flex items-center gap-2 text-slate-400">
             <Shield className="w-3.5 h-3.5 text-emerald-400" />
             <span>GDPR &amp; Privacy Compliant Digital Media</span>

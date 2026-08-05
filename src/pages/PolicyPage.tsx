@@ -39,7 +39,7 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ pageType, onNavigate }) 
       case 'cookie-policy':
         return { title: 'Cookie Policy', subtitle: 'Detailed Usage of Tracking & Essential Cookies' };
       case 'about':
-        return { title: 'About TechPulse', subtitle: 'Editorial Mission, Authority & Standards' };
+        return { title: 'About EarnInfo', subtitle: 'Editorial Mission, Authority & Standards' };
       case 'contact':
         return { title: 'Contact Desk', subtitle: 'Editorial Inquiries, Press Releases & Support' };
     }
@@ -68,17 +68,17 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ pageType, onNavigate }) 
               
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">1. Introduction</h2>
               <p>
-                At <strong>TechPulse Media</strong>, accessible from techpulse-blog.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by TechPulse and how we use it.
+                At <strong>EarnInfo Media</strong>, accessible from earninfo.org, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by EarnInfo and how we use it.
               </p>
 
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">2. Google DoubleClick DART Cookie &amp; AdSense</h2>
               <p>
-                Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to techpulse-blog.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline">https://policies.google.com/technologies/ads</a>.
+                Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to earninfo.org and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline">https://policies.google.com/technologies/ads</a>.
               </p>
 
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">3. Third-Party Privacy Policies &amp; Analytics</h2>
               <p>
-                TechPulse's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers or ad networks for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
+                EarnInfo's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers or ad networks for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
               </p>
 
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">4. GDPR Data Protection Rights</h2>
@@ -92,11 +92,11 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ pageType, onNavigate }) 
             <div className="space-y-6 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">Terms of Service</h2>
               <p>
-                Welcome to TechPulse. By accessing this website, you accept these terms and conditions in full. Do not continue to use TechPulse if you do not accept all of the terms and conditions stated on this page.
+                Welcome to EarnInfo. By accessing this website, you accept these terms and conditions in full. Do not continue to use EarnInfo if you do not accept all of the terms and conditions stated on this page.
               </p>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">Intellectual Property Rights</h3>
               <p>
-                Unless otherwise stated, TechPulse and/or its licensors own the intellectual property rights for all material published on TechPulse. All intellectual property rights are reserved.
+                Unless otherwise stated, EarnInfo and/or its licensors own the intellectual property rights for all material published on EarnInfo. All intellectual property rights are reserved.
               </p>
             </div>
           )}
@@ -105,11 +105,11 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ pageType, onNavigate }) 
             <div className="space-y-6 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">Editorial &amp; Technology Disclaimer</h2>
               <p>
-                All the information on this website is published in good faith and for general information purpose only. TechPulse does not make any warranties about the completeness, reliability, and accuracy of this information. Any action you take upon the information you find on this website is strictly at your own risk.
+                All the information on this website is published in good faith and for general information purpose only. EarnInfo does not make any warranties about the completeness, reliability, and accuracy of this information. Any action you take upon the information you find on this website is strictly at your own risk.
               </p>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">AI Content Disclosure</h3>
               <p>
-                TechPulse utilizes specialized AI toolsets (including Google Gemini) to assist editorial staff in code synthesis, data verification, and research summarization. All published materials are reviewed by human domain experts.
+                EarnInfo utilizes specialized AI toolsets (including Google Gemini) to assist editorial staff in code synthesis, data verification, and research summarization. All published materials are reviewed by human domain experts.
               </p>
             </div>
           )}
@@ -118,7 +118,7 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ pageType, onNavigate }) 
             <div className="space-y-6 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">Cookie Declaration</h2>
               <p>
-                TechPulse uses cookies to enhance browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+                EarnInfo uses cookies to enhance browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
               </p>
             </div>
           )}
@@ -127,10 +127,10 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ pageType, onNavigate }) 
             <div className="space-y-6 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">Our Editorial Mission</h2>
               <p>
-                TechPulse is an independent digital publishing outlet dedicated to technical clarity, deep system architecture breakdowns, and ethical Artificial Intelligence reporting.
+                EarnInfo is an independent digital publishing outlet dedicated to technical clarity, actionable earning guides, deep system architecture breakdowns, and ethical Artificial Intelligence reporting.
               </p>
               <p>
-                Founded in 2026, our newsroom brings together principal researchers, senior software architects, and ethical hackers to deliver actionable insights without commercial noise or clickbait.
+                Founded in 2026, our newsroom brings together principal researchers, senior software architects, and digital marketing strategists to deliver actionable insights without commercial noise or clickbait.
               </p>
             </div>
           )}

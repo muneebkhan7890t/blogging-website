@@ -47,7 +47,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
         },
         publisher: {
           '@type': 'Organization',
-          name: 'TechPulse',
+          name: 'EarnInfo',
           logo: {
             '@type': 'ImageObject',
             url: `${baseUrl}/favicon.ico`
@@ -60,7 +60,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
       schemaObject = {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: 'TechPulse SEO Blog Platform',
+        name: 'EarnInfo - Digital Publishing & Guides',
         url: baseUrl,
         potentialAction: {
           '@type': 'SearchAction',
@@ -72,7 +72,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
       schemaObject = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: 'TechPulse Publishing',
+        name: 'EarnInfo Media',
         url: baseUrl,
         logo: `${baseUrl}/logo.png`,
         sameAs: [

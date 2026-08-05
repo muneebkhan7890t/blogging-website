@@ -64,7 +64,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {subscribed ? (
           <div className="bg-emerald-950/80 border border-emerald-700 text-emerald-300 text-xs p-3 rounded-xl flex items-center gap-2 font-medium">
             <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Thank you! You are now subscribed to TechPulse.</span>
+            <span>Thank you! You are now subscribed to EarnInfo.</span>
           </div>
         ) : (
           <form onSubmit={handleSubscribe} className="space-y-2">
