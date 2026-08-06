@@ -104,7 +104,8 @@ export default function App() {
 
   // Route Resolver
   const renderRoute = () => {
-    const path = currentPath.split('?')[0];
+    const rawPath = currentPath.split('?')[0];
+    const path = rawPath.replace(/\/+$/, '') || '/';
     const searchParams = new URLSearchParams(currentPath.includes('?') ? currentPath.split('?')[1] : '');
 
     // 1. Admin Page
@@ -121,7 +122,7 @@ export default function App() {
 
     // 2. Single Article Page: /article/:slug
     if (path.startsWith('/article/')) {
-      const slug = path.replace('/article/', '');
+      const slug = decodeURIComponent(path.replace('/article/', '')).replace(/\/+$/, '').trim();
       return (
         <ArticlePage
           slug={slug}
@@ -136,7 +137,7 @@ export default function App() {
 
     // 3. Category Page: /category/:slug
     if (path.startsWith('/category/')) {
-      const slug = path.replace('/category/', '');
+      const slug = decodeURIComponent(path.replace('/category/', '')).replace(/\/+$/, '').trim();
       return (
         <CategoryPage
           categorySlug={slug}

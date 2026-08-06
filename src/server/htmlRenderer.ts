@@ -61,6 +61,7 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
   // 1. SINGLE ARTICLE ROUTE: /article/:slug
   // ------------------------------------------------------------------
   if (pathname.startsWith('/article/')) {
+
     const rawSlug = pathname.replace('/article/', '');
     const slug = decodeURIComponent(rawSlug);
     const article = db.articles.find(a => a.slug === slug || a.slug === rawSlug);

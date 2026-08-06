@@ -41,7 +41,7 @@ function loadDB(): LocalDB {
       const data: LocalDB = JSON.parse(fs.readFileSync(DB_FILE, 'utf-8'));
       let modified = false;
 
-      // Sync categories
+      // Sync categories - only add missing
       initialCategories.forEach(cat => {
         if (!data.categories.some(c => c.id === cat.id || c.slug === cat.slug)) {
           data.categories.push(cat);
@@ -49,7 +49,7 @@ function loadDB(): LocalDB {
         }
       });
 
-      // Sync tags
+      // Sync tags - only add missing
       initialTags.forEach(tag => {
         if (!data.tags.some(t => t.id === tag.id || t.slug === tag.slug)) {
           data.tags.push(tag);
@@ -57,19 +57,12 @@ function loadDB(): LocalDB {
         }
       });
 
-      // Sync initial articles: update existing or add if missing
+      // Sync initial articles: only add missing articles, NEVER overwrite user-edited articles
       initialArticles.forEach(art => {
-        const idx = data.articles.findIndex(a => a.id === art.id || a.slug === art.slug);
-        if (idx >= 0) {
-          data.articles[idx] = {
-            ...data.articles[idx],
-            ...art,
-            // Keep user comments/views if already incremented
-            views: Math.max(data.articles[idx].views || 0, art.views || 0),
-            likes: Math.max(data.articles[idx].likes || 0, art.likes || 0)
-          };
-          modified = true;
-        } else {
+        const exists = data.articles.some(
+          a => a.id === art.id || (a.slug && art.slug && a.slug.toLowerCase() === art.slug.toLowerCase())
+        );
+        if (!exists) {
           data.articles.unshift(art);
           modified = true;
         }
@@ -126,6 +119,13 @@ function saveDB(data: LocalDB) {
 }
 
 let db = loadDB();
+
+function getDB(): LocalDB {
+  if (!db) {
+    db = loadDB();
+  }
+  return db;
+}
 
 // Dynamic Gemini Client Lazy Initialization
 function getGeminiClient() {
@@ -202,17 +202,21 @@ app.get('/api/articles', (req, res) => {
 
 // 2. Get Single Article by Slug or ID + Increment View Counter
 app.get('/api/articles/:slugOrId', (req, res) => {
-  const { slugOrId } = req.params;
+  const rawParam = req.params.slugOrId || '';
+  const cleanParam = decodeURIComponent(rawParam).replace(/\/+$/, '').trim().toLowerCase();
+
   const articleIndex = db.articles.findIndex(
-    a => a.slug === slugOrId || a.id === slugOrId
+    a => (a.slug || '').trim().toLowerCase() === cleanParam ||
+         (a.id || '').trim().toLowerCase() === cleanParam
   );
 
   if (articleIndex === -1) {
     return res.status(404).json({ error: 'Article not found' });
   }
 
-  // Increment view in memory
-  db.articles[articleIndex].views += 1;
+  // Increment view in memory and persist
+  db.articles[articleIndex].views = (db.articles[articleIndex].views || 0) + 1;
+  saveDB(db);
 
   res.json(db.articles[articleIndex]);
 });
@@ -522,7 +526,7 @@ Respond with a JSON object containing:
 
 // Sitemap XML endpoint
 app.get('/sitemap.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
+  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
   
   const staticPages = [
     '',
@@ -579,7 +583,7 @@ app.get('/sitemap.xml', (req, res) => {
 
 // RSS Feed endpoint
 app.get('/rss.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
+  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
 
   let rss = `<?xml version="1.0" encoding="UTF-8" ?>\n`;
   rss += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
@@ -613,7 +617,7 @@ app.get('/rss.xml', (req, res) => {
 
 // Robots.txt
 app.get('/robots.txt', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
+  const baseUrl = process.env.APP_URL || 'https://techpulse-blog.com';
   const content = `User-agent: *
 Allow: /
 Disallow: /admin/
@@ -651,8 +655,8 @@ async function startServer() {
     }
 
     try {
-      const hostUrl = process.env.APP_URL || 'https://earninfos.com';
-      const dbData = loadDB();
+      const hostUrl = process.env.APP_URL || `${req.protocol}://${req.get('host')}`;
+      const dbData = getDB();
 
       let templateHtml = '';
 
