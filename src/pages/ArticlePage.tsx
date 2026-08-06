@@ -51,24 +51,32 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
     setError('');
 
     async function loadArticle() {
-      try {
-        const fetched = await api.getArticleBySlug(slug);
-        if (isMounted) {
-          setArticle(fetched);
-          // Load comments
-          const comms = await api.getArticleComments(fetched.id);
-          setComments(comms);
-          // Set page title for browser tab
-          document.title = `${fetched.metaTitle || fetched.title} | EarnInfo`;
-        }
-      } catch (err: any) {
-        if (isMounted) {
-          setError(err.message || 'Article not found');
-        }
-      } finally {
-        if (isMounted) setLoading(false);
-      }
+try {
+  console.log("Loading slug:", slug);
+
+  const fetched = await api.getArticleBySlug(slug);
+  console.log("Article loaded:", fetched);
+
+  if (isMounted) {
+    setArticle(fetched);
+
+    try {
+      const comms = await api.getArticleComments(fetched.id);
+      console.log("Comments:", comms);
+      setComments(comms);
+    } catch (e) {
+      console.error("Comments failed:", e);
     }
+
+    document.title = `${fetched.metaTitle || fetched.title} | EarnInfo`;
+  }
+} catch (err) {
+  console.error("ARTICLE ERROR:", err);
+
+  if (isMounted) {
+    setError("Article not found");
+  }
+}}
 
     loadArticle();
 
