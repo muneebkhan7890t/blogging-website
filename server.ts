@@ -651,7 +651,7 @@ async function startServer() {
     }
 
     try {
-      const hostUrl = process.env.APP_URL || `${req.protocol}://${req.get('host')}`;
+      const hostUrl = process.env.APP_URL || 'https://earninfos.com';
       const dbData = loadDB();
 
       let templateHtml = '';
