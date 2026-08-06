@@ -87,7 +87,7 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
         <div class="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-slate-900 p-6 text-center">
           <div class="max-w-md bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
             <h1 class="text-6xl font-black text-indigo-600 mb-2">404</h1>
-            <h2 class="text-2xl font-bold mb-4">Article Not Found</h2>
+            <h2 class="text-2xl font-bold mb-4">THIS IS THE OLD SSR BUILD 123456</h2>
             <p class="text-slate-600 mb-6">Sorry, the article you are looking for does not exist or has been removed.</p>
             <a href="/" class="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition">Return to Home</a>
           </div>
