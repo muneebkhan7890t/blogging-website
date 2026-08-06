@@ -655,7 +655,7 @@ async function startServer() {
     }
 
     try {
-      const hostUrl = process.env.APP_URL || `${req.protocol}://${req.get('host')}`;
+      const hostUrl =process.env.APP_URL ||`https://${req.get("host")}`;
       const dbData = getDB();
 
       let templateHtml = '';
