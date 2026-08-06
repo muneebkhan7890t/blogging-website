@@ -11,6 +11,7 @@ import {
   initialComments
 } from './src/data/initialData.js';
 import { Article, Category, Tag, Comment, NewsletterSubscriber, ContactMessage } from './src/types.js';
+import { renderPageHtml } from './src/server/htmlRenderer.js';
 
 const app = express();
 const PORT = 3000;
@@ -521,7 +522,7 @@ Respond with a JSON object containing:
 
 // Sitemap XML endpoint
 app.get('/sitemap.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
+  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
   
   const staticPages = [
     '',
@@ -578,7 +579,7 @@ app.get('/sitemap.xml', (req, res) => {
 
 // RSS Feed endpoint
 app.get('/rss.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
+  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
 
   let rss = `<?xml version="1.0" encoding="UTF-8" ?>\n`;
   rss += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
@@ -612,7 +613,7 @@ app.get('/rss.xml', (req, res) => {
 
 // Robots.txt
 app.get('/robots.txt', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
+  const baseUrl = process.env.APP_URL || 'https://techpulse-blog.com';
   const content = `User-agent: *
 Allow: /
 Disallow: /admin/
@@ -629,22 +630,63 @@ Sitemap: ${baseUrl}/sitemap.xml
 // ------------------------------------------------------------------
 
 async function startServer() {
+  let vite: any = null;
+
   if (process.env.NODE_ENV !== 'production') {
-    const vite = await createViteServer({
+    vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: 'spa'
+      appType: 'custom'
     });
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
+    app.use(express.static(distPath, { index: false }));
   }
 
+  // Server-Side Pre-rendering HTML Handler for article & page routes
+  app.get('*', async (req, res, next) => {
+    // Pass through API endpoints, file extensions, or static assets
+    if (req.originalUrl.startsWith('/api/') || req.originalUrl.includes('.')) {
+      return next();
+    }
+
+    try {
+      const hostUrl = process.env.APP_URL || `${req.protocol}://${req.get('host')}`;
+      const dbData = loadDB();
+
+      let templateHtml = '';
+
+      if (process.env.NODE_ENV !== 'production' && vite) {
+        const rawIndex = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf-8');
+        templateHtml = await vite.transformIndexHtml(req.originalUrl, rawIndex);
+      } else {
+        const indexPath = path.join(process.cwd(), 'dist', 'index.html');
+        if (fs.existsSync(indexPath)) {
+          templateHtml = fs.readFileSync(indexPath, 'utf-8');
+        } else {
+          templateHtml = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf-8');
+        }
+      }
+
+      const { statusCode, html } = await renderPageHtml({
+        reqUrl: req.originalUrl,
+        hostUrl,
+        db: dbData,
+        templateHtml
+      });
+
+      res.status(statusCode).set({ 'Content-Type': 'text/html; charset=utf-8' }).send(html);
+    } catch (err) {
+      console.error('SSR Render Error:', err);
+      if (vite) {
+        vite.ssrFixStacktrace(err as Error);
+      }
+      next(err);
+    }
+  });
+
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`TechPulse SEO Blog Server running at http://0.0.0.0:${PORT}`);
+    console.log(`EarnInfo SEO Server running at http://0.0.0.0:${PORT}`);
   });
 }
 
