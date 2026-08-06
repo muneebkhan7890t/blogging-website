@@ -522,7 +522,7 @@ Respond with a JSON object containing:
 
 // Sitemap XML endpoint
 app.get('/sitemap.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
+  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
   
   const staticPages = [
     '',
@@ -579,7 +579,7 @@ app.get('/sitemap.xml', (req, res) => {
 
 // RSS Feed endpoint
 app.get('/rss.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
+  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
 
   let rss = `<?xml version="1.0" encoding="UTF-8" ?>\n`;
   rss += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
@@ -613,7 +613,7 @@ app.get('/rss.xml', (req, res) => {
 
 // Robots.txt
 app.get('/robots.txt', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://techpulse-blog.com';
+  const baseUrl = process.env.APP_URL || 'https://earninfos.com';
   const content = `User-agent: *
 Allow: /
 Disallow: /admin/
