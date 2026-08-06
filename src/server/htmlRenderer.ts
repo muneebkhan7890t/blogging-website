@@ -62,11 +62,23 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
   // ------------------------------------------------------------------
   if (pathname.startsWith('/article/')) {
 
+    console.log("========== SSR ==========");
+    console.log("URL:", reqUrl);
+    console.log("Path:", pathname);
+    console.log("Articles:", db.articles.length);
+
     const rawSlug = pathname.replace('/article/', '');
     const slug = decodeURIComponent(rawSlug);
+    console.log("Requested slug:", slug);
     const article = db.articles.find(a => a.slug === slug || a.slug === rawSlug);
+    console.log("Found:", !!article);
 
-    if (!article || article.status !== 'published') {
+    if (article) {
+    console.log("Title:", article.title);
+    console.log("Status:", article.status);
+    }
+
+    if (!article || (article.status && article.status !== 'published')) {
       statusCode = 404;
       pageTitle = `404 - Article Not Found | ${siteName}`;
       metaDesc = 'The requested article could not be found or has been moved.';
