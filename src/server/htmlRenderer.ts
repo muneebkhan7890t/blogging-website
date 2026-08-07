@@ -93,7 +93,7 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
       statusCode = 200;
       pageTitle = `${article.metaTitle || article.title} | ${siteName}`;
       metaDesc = escapeHtml(article.metaDescription || article.excerpt || defaultMetaDesc);
-      canonicalUrl = article.canonicalUrl || `${hostUrl}/article/${article.slug}`;
+      canonicalUrl = `https://earninfos.com/article/${article.slug}`;
       ogImage = article.featuredImage || defaultOgImage;
       ogType = 'article';
 

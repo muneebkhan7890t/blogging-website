@@ -223,10 +223,17 @@ app.get('/api/articles/:slugOrId', (req, res) => {
 
 // 3. Create Article (Admin)
 app.post('/api/articles', (req, res) => {
+
+  const slug =
+    req.body.slug ||
+    (req.body.title
+      ? req.body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+      : 'untitled-' + Date.now());
+
   const newArticle: Article = {
     id: 'art-' + Date.now(),
     title: req.body.title || 'Untitled Article',
-    slug: req.body.slug || (req.body.title ? req.body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'untitled-' + Date.now()),
+    slug,
     excerpt: req.body.excerpt || '',
     content: req.body.content || '',
     featuredImage: req.body.featuredImage || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200',
@@ -249,7 +256,7 @@ app.post('/api/articles', (req, res) => {
     faqs: req.body.faqs || [],
     metaTitle: req.body.metaTitle || req.body.title,
     metaDescription: req.body.metaDescription || req.body.excerpt,
-    canonicalUrl: req.body.canonicalUrl
+    canonicalUrl: `https://earninfos.com/article/${slug}`
   };
 
   db.articles.unshift(newArticle);
@@ -526,7 +533,7 @@ Respond with a JSON object containing:
 
 // Sitemap XML endpoint
 app.get('/sitemap.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
+  const baseUrl = 'https://earninfos.com';
   
   const staticPages = [
     '',
@@ -583,7 +590,7 @@ app.get('/sitemap.xml', (req, res) => {
 
 // RSS Feed endpoint
 app.get('/rss.xml', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://earninfo.org';
+  const baseUrl = 'https://earninfos.com';
 
   let rss = `<?xml version="1.0" encoding="UTF-8" ?>\n`;
   rss += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
@@ -617,7 +624,7 @@ app.get('/rss.xml', (req, res) => {
 
 // Robots.txt
 app.get('/robots.txt', (req, res) => {
-  const baseUrl = process.env.APP_URL || 'https://techpulse-blog.com';
+  const baseUrl = 'https://earninfos.com';
   const content = `User-agent: *
 Allow: /
 Disallow: /admin/
@@ -655,7 +662,7 @@ async function startServer() {
     }
 
     try {
-      const hostUrl = process.env.APP_URL || `${req.protocol}://${req.get('host')}`;
+      const hostUrl = 'https://earninfos.com';
       const dbData = getDB();
 
       let templateHtml = '';
