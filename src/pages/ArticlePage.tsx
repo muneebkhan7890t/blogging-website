@@ -50,27 +50,51 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
     setLoading(true);
     setError('');
 
-    async function loadArticle() {
-      try {
-        const fetched = await api.getArticleBySlug(slug);
-        if (isMounted) {
-          setArticle(fetched);
-          // Load comments
-          const comms = await api.getArticleComments(fetched.id);
-          setComments(comms);
-          // Set page title for browser tab
-          document.title = `${fetched.metaTitle || fetched.title} | EarnInfo`;
-        }
-      } catch (err: any) {
-        if (isMounted) {
-          setError(err.message || 'Article not found');
-        }
-      } finally {
-        if (isMounted) setLoading(false);
+async function loadArticle() {
+  try {
+    // First: load the article
+    const fetched = await api.getArticleBySlug(slug);
+
+    if (!isMounted) return;
+
+    // Article loaded successfully — set it immediately
+    setArticle(fetched);
+    setError('');
+
+    // Set page title
+    document.title = `${fetched.metaTitle || fetched.title} | EarnInfo`;
+
+    // Comments are OPTIONAL.
+    // If comments fail, do NOT treat the article as missing.
+    try {
+      const comms = await api.getArticleComments(fetched.id);
+
+      if (isMounted) {
+        setComments(comms);
+      }
+    } catch (commentError) {
+      console.error('Failed to load comments:', commentError);
+
+      if (isMounted) {
+        setComments([]);
       }
     }
 
-    loadArticle();
+  } catch (err: any) {
+    // Only the ARTICLE request should trigger "Article not found"
+    console.error('Failed to load article:', err);
+
+    if (isMounted) {
+      setError(err.message || 'Article not found');
+    }
+  } finally {
+    if (isMounted) {
+      setLoading(false);
+    }
+  }
+}
+
+loadArticle();
 
     return () => {
       isMounted = false;
