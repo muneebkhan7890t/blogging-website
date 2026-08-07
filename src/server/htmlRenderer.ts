@@ -451,29 +451,28 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
   }
 
   // Construct complete Head Injections
-  const headInjections = `
-    <title>${escapeHtml(pageTitle)}</title>
-    <meta name="title" content="${escapeHtml(pageTitle)}" />
-    <meta name="description" content="${escapeHtml(metaDesc)}" />
-    <link rel="canonical" href="${canonicalUrl}" />
+const headInjections = `
+<title>${escapeHtml(pageTitle)}</title>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="${ogType}" />
-    <meta property="og:url" content="${canonicalUrl}" />
-    <meta property="og:title" content="${escapeHtml(pageTitle)}" />
-    <meta property="og:description" content="${escapeHtml(metaDesc)}" />
-    <meta property="og:image" content="${ogImage}" />
-    <meta property="og:site_name" content="${siteName}" />
+<meta name="description" content="${escapeHtml(metaDesc)}" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="${canonicalUrl}" />
-    <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />
-    <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />
-    <meta name="twitter:image" content="${ogImage}" />
+<link rel="canonical" href="${canonicalUrl}" />
 
-    ${extraHead}
-  `;
+<meta property="og:type" content="${ogType}" />
+<meta property="og:url" content="${canonicalUrl}" />
+<meta property="og:title" content="${escapeHtml(pageTitle)}" />
+<meta property="og:description" content="${escapeHtml(metaDesc)}" />
+<meta property="og:image" content="${ogImage}" />
+<meta property="og:site_name" content="${siteName}" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="${canonicalUrl}" />
+<meta name="twitter:title" content="${escapeHtml(pageTitle)}" />
+<meta name="twitter:description" content="${escapeHtml(metaDesc)}" />
+<meta name="twitter:image" content="${ogImage}" />
+
+${extraHead}
+`;
 
   let finalHtml = templateHtml;
 
