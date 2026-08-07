@@ -13,9 +13,27 @@ import { PolicyPage } from './pages/PolicyPage';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { NotFoundPage } from './pages/NotFoundPage';
 
+// Data the server already fetched and embedded in the HTML response.
+// Reading it here means first paint never has to wait on a client
+// fetch (or show a loading spinner) for data we already have.
+declare global {
+  interface Window {
+    __INITIAL_DATA__?: {
+      articles: Article[];
+      categories: Category[];
+      tags: Tag[];
+      authors: Author[];
+      article: Article | null;
+      notFound: boolean;
+    };
+  }
+}
+
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => window.location.pathname + window.location.search);
-  
+
+  const initialData = typeof window !== 'undefined' ? window.__INITIAL_DATA__ : undefined;
+
   // Dark Mode State
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     return localStorage.getItem('techpulse_theme') === 'dark' ||
@@ -25,12 +43,15 @@ export default function App() {
   // AdSense Wireframe Toggle State
   const [showAds, setShowAds] = useState<boolean>(true);
 
-  // Data States
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [tags, setTags] = useState<Tag[]>([]);
-  const [authors, setAuthors] = useState<Author[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // Data States — seeded from the server-embedded data when available
+  // so first render already has real content instead of an empty array.
+  const [articles, setArticles] = useState<Article[]>(initialData?.articles || []);
+  const [categories, setCategories] = useState<Category[]>(initialData?.categories || []);
+  const [tags, setTags] = useState<Tag[]>(initialData?.tags || []);
+  const [authors, setAuthors] = useState<Author[]>(initialData?.authors || []);
+  // If the server already gave us data, skip the blocking "Initializing..."
+  // screen entirely — we still refresh in the background below.
+  const [loading, setLoading] = useState<boolean>(!initialData);
 
   // Saved Bookmarks State
   const [bookmarks, setBookmarks] = useState<string[]>(() => {
@@ -67,8 +88,15 @@ export default function App() {
   }, []);
 
   async function loadInitialData() {
+    // If the server already embedded data for us, this call becomes a
+    // silent background refresh (e.g. to pick up admin statuses) —
+    // it must never re-trigger the full-screen loading state, since
+    // real content is already on screen.
+    const hadInitialData = !!initialData;
     try {
-      setLoading(true);
+      if (!hadInitialData) {
+        setLoading(true);
+      }
       const [artRes, catRes, tagRes, autRes] = await Promise.all([
         api.getArticles({ status: 'all', limit: 100 }),
         api.getCategories(),
@@ -82,7 +110,9 @@ export default function App() {
     } catch (err) {
       console.error('Data loading error:', err);
     } finally {
-      setLoading(false);
+      if (!hadInitialData) {
+        setLoading(false);
+      }
     }
   }
 

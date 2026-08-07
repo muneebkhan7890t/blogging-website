@@ -683,7 +683,8 @@ async function startServer() {
         reqUrl: req.originalUrl,
         hostUrl,
         db: dbData,
-        templateHtml
+        templateHtml,
+        authors: authorsList
       });
 
       res.status(statusCode).set({ 'Content-Type': 'text/html; charset=utf-8' }).send(html);

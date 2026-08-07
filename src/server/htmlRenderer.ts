@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import { Article, Category, Tag, Comment, NewsletterSubscriber, ContactMessage } from '../types.js';
+import { Article, Category, Tag, Comment, NewsletterSubscriber, ContactMessage, Author } from '../types.js';
 
 export interface LocalDB {
   articles: Article[];
@@ -15,6 +15,7 @@ interface RenderOptions {
   hostUrl: string;
   db: LocalDB;
   templateHtml: string;
+  authors: Author[];
 }
 
 interface RenderResult {
@@ -32,7 +33,7 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
-export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: RenderOptions): Promise<RenderResult> {
+export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml, authors }: RenderOptions): Promise<RenderResult> {
   let urlObj: URL;
   try {
     urlObj = new URL(reqUrl, hostUrl);
@@ -56,6 +57,7 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
   let ogType = 'website';
   let extraHead = '';
   let bodyContentHtml = '';
+  let hydrationArticle: Article | null = null;
 
   const normalizedPath = pathname.replace(/\/+$/, '') || '/';
 
@@ -90,6 +92,7 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
         </div>
       `;
     } else {
+      hydrationArticle = article;
       statusCode = 200;
       pageTitle = `${article.metaTitle || article.title} | ${siteName}`;
       metaDesc = escapeHtml(article.metaDescription || article.excerpt || defaultMetaDesc);
@@ -491,6 +494,38 @@ ${extraHead}
     } else if (finalHtml.includes('<div id="root">')) {
       finalHtml = finalHtml.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${bodyContentHtml}</div>`);
     }
+  }
+
+  // ------------------------------------------------------------------
+  // EMBED INITIAL DATA FOR CLIENT HYDRATION
+  // ------------------------------------------------------------------
+  // The React app used to blow away this SSR HTML on mount and re-fetch
+  // everything from scratch (App-level data, then the article again).
+  // That fetch waterfall is what Googlebot was catching mid-flight,
+  // rendering a loading spinner or a false "Article Not Found" state
+  // even though the real server response was correct.
+  // By embedding the data we already fetched here, the client can
+  // render the correct content on the very first paint, with zero
+  // network round-trips required.
+  const publishedArticles = db.articles.filter(a => !a.status || a.status === 'published');
+  const initialData = {
+    articles: publishedArticles,
+    categories: db.categories,
+    tags: db.tags,
+    authors,
+    article: hydrationArticle,
+    notFound: statusCode === 404
+  };
+
+  // Escape "</" sequences so embedded content can never prematurely
+  // close the <script> tag (also neutralizes </script> injection).
+  const serializedInitialData = JSON.stringify(initialData).replace(/</g, '\\u003c');
+  const initialDataScript = `<script id="__INITIAL_DATA__">window.__INITIAL_DATA__ = ${serializedInitialData};</script>`;
+
+  if (finalHtml.includes('</body>')) {
+    finalHtml = finalHtml.replace('</body>', `${initialDataScript}\n</body>`);
+  } else {
+    finalHtml += initialDataScript;
   }
 
   return {

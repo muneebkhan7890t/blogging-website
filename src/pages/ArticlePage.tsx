@@ -40,15 +40,36 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
   allArticles,
   showAds = true
 }) => {
-  const [article, setArticle] = useState<Article | null>(null);
+  // If the server already embedded this exact article (the normal case
+  // for a direct/first load of /article/:slug), use it immediately —
+  // no fetch, no spinner, no window where a slow/failed request could
+  // make the page briefly render "Article Not Found" (which is what a
+  // JS-rendering crawler like Googlebot could catch and report as a
+  // soft 404, even though the server's real response was correct).
+  const embedded = typeof window !== 'undefined' ? window.__INITIAL_DATA__ : undefined;
+  const embeddedArticle =
+    embedded?.article && embedded.article.slug?.toLowerCase() === slug?.toLowerCase()
+      ? embedded.article
+      : null;
+
+  const [article, setArticle] = useState<Article | null>(embeddedArticle);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!embeddedArticle);
   const [error, setError] = useState('');
 
   useEffect(() => {
     let isMounted = true;
-    setLoading(true);
-    setError('');
+
+    // Only show the loading/fetch flow when we don't already have this
+    // article from the server. Otherwise this becomes a silent
+    // background refresh (to pick up an updated view count, etc.) that
+    // must never overwrite good content with a "not found" state —
+    // if it fails, we just keep showing what the server gave us.
+    const hasEmbedded = !!embeddedArticle;
+    if (!hasEmbedded) {
+      setLoading(true);
+      setError('');
+    }
 
 async function loadArticle() {
   try {
@@ -81,14 +102,16 @@ async function loadArticle() {
     }
 
   } catch (err: any) {
-    // Only the ARTICLE request should trigger "Article not found"
     console.error('Failed to load article:', err);
 
-    if (isMounted) {
+    // Only surface "Article not found" when we don't already have a
+    // good copy of the article on screen. A background refresh that
+    // fails should never erase working content.
+    if (isMounted && !hasEmbedded) {
       setError(err.message || 'Article not found');
     }
   } finally {
-    if (isMounted) {
+    if (isMounted && !hasEmbedded) {
       setLoading(false);
     }
   }
