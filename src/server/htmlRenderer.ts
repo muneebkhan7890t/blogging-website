@@ -57,28 +57,24 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
   let extraHead = '';
   let bodyContentHtml = '';
 
+  const normalizedPath = pathname.replace(/\/+$/, '') || '/';
+
   // ------------------------------------------------------------------
   // 1. SINGLE ARTICLE ROUTE: /article/:slug
   // ------------------------------------------------------------------
-  if (pathname.startsWith('/article/')) {
+  if (normalizedPath.startsWith('/article/')) {
+    const rawSlug = normalizedPath.replace('/article/', '');
+    const cleanSlug = decodeURIComponent(rawSlug).replace(/\/+$/, '').trim().toLowerCase();
 
-    console.log("========== SSR ==========");
-    console.log("URL:", reqUrl);
-    console.log("Path:", pathname);
-    console.log("Articles:", db.articles.length);
+    const article = db.articles.find(a => {
+      const aSlug = (a.slug || '').trim().toLowerCase();
+      const aId = (a.id || '').trim().toLowerCase();
+      return aSlug === cleanSlug || aId === cleanSlug;
+    });
 
-    const rawSlug = pathname.replace('/article/', '');
-    const slug = decodeURIComponent(rawSlug);
-    console.log("Requested slug:", slug);
-    const article = db.articles.find(a => a.slug === slug || a.slug === rawSlug);
-    console.log("Found:", !!article);
+    const isPublished = article && (!article.status || article.status === 'published');
 
-    if (article) {
-    console.log("Title:", article.title);
-    console.log("Status:", article.status);
-    }
-
-    if (!article || (article.status && article.status !== 'published')) {
+    if (!article || !isPublished) {
       statusCode = 404;
       pageTitle = `404 - Article Not Found | ${siteName}`;
       metaDesc = 'The requested article could not be found or has been moved.';
@@ -87,7 +83,7 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
         <div class="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-slate-900 p-6 text-center">
           <div class="max-w-md bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
             <h1 class="text-6xl font-black text-indigo-600 mb-2">404</h1>
-            <h2 class="text-2xl font-bold mb-4">THIS IS THE OLD SSR BUILD 123456</h2>
+            <h2 class="text-2xl font-bold mb-4">Article Not Found</h2>
             <p class="text-slate-600 mb-6">Sorry, the article you are looking for does not exist or has been removed.</p>
             <a href="/" class="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition">Return to Home</a>
           </div>
@@ -268,10 +264,16 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
   // ------------------------------------------------------------------
   // 2. CATEGORY ROUTE: /category/:slug
   // ------------------------------------------------------------------
-  else if (pathname.startsWith('/category/')) {
-    const rawSlug = pathname.replace('/category/', '');
-    const slug = decodeURIComponent(rawSlug);
-    const category = db.categories.find(c => c.slug === slug || c.id === slug);
+  else if (normalizedPath.startsWith('/category/')) {
+    const rawSlug = normalizedPath.replace('/category/', '');
+    const cleanCatSlug = decodeURIComponent(rawSlug).replace(/\/+$/, '').trim().toLowerCase();
+
+    const category = db.categories.find(c => {
+      const cSlug = (c.slug || '').trim().toLowerCase();
+      const cId = (c.id || '').trim().toLowerCase();
+      const cName = (c.name || '').trim().toLowerCase();
+      return cSlug === cleanCatSlug || cId === cleanCatSlug || cName === cleanCatSlug;
+    });
 
     if (!category) {
       statusCode = 404;
@@ -294,10 +296,10 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
       canonicalUrl = `${hostUrl}/category/${category.slug}`;
 
       const catArticles = db.articles.filter(a => 
-        a.status === 'published' && (
-          a.category.toLowerCase() === category.slug.toLowerCase() || 
-          a.category.toLowerCase() === category.id.toLowerCase() || 
-          a.category.toLowerCase() === category.name.toLowerCase()
+        (!a.status || a.status === 'published') && (
+          (a.category || '').trim().toLowerCase() === (category.slug || '').trim().toLowerCase() || 
+          (a.category || '').trim().toLowerCase() === (category.id || '').trim().toLowerCase() || 
+          (a.category || '').trim().toLowerCase() === (category.name || '').trim().toLowerCase()
         )
       );
 
@@ -350,13 +352,13 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
   // ------------------------------------------------------------------
   // 3. HOMEPAGE ROUTE: /
   // ------------------------------------------------------------------
-  else if (pathname === '/' || pathname === '') {
+  else if (normalizedPath === '/' || normalizedPath === '') {
     statusCode = 200;
     pageTitle = defaultMetaTitle;
     metaDesc = defaultMetaDesc;
     canonicalUrl = `${hostUrl}/`;
 
-    const publishedArticles = db.articles.filter(a => a.status === 'published');
+    const publishedArticles = db.articles.filter(a => !a.status || a.status === 'published');
 
     const jsonLdWebsite = {
       '@context': 'https://schema.org',
@@ -419,21 +421,27 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml }: Rend
   // ------------------------------------------------------------------
   else {
     statusCode = 200;
-    if (pathname === '/admin') {
+    if (normalizedPath === '/admin') {
       pageTitle = `Admin Dashboard | ${siteName}`;
       extraHead = `<meta name="robots" content="noindex, nofollow">`;
-    } else if (pathname === '/categories') {
+    } else if (normalizedPath === '/categories') {
       pageTitle = `All Categories | ${siteName}`;
-    } else if (pathname === '/about') {
+    } else if (normalizedPath === '/about') {
       pageTitle = `About Us | ${siteName}`;
-    } else if (pathname === '/privacy-policy') {
+    } else if (normalizedPath === '/privacy-policy') {
       pageTitle = `Privacy Policy | ${siteName}`;
-    } else if (pathname === '/terms') {
+    } else if (normalizedPath === '/terms') {
       pageTitle = `Terms of Service | ${siteName}`;
-    } else if (pathname === '/disclaimer') {
+    } else if (normalizedPath === '/disclaimer') {
       pageTitle = `Disclaimer | ${siteName}`;
-    } else if (pathname === '/contact') {
+    } else if (normalizedPath === '/cookie-policy') {
+      pageTitle = `Cookie Policy | ${siteName}`;
+    } else if (normalizedPath === '/contact') {
       pageTitle = `Contact Us | ${siteName}`;
+    } else if (normalizedPath === '/authors') {
+      pageTitle = `Authors | ${siteName}`;
+    } else if (normalizedPath === '/search') {
+      pageTitle = `Search | ${siteName}`;
     } else {
       // Any unhandled route
       statusCode = 404;

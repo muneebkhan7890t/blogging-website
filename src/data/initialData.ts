@@ -120,6 +120,15 @@ export const initialCategories: Category[] = [
     icon: 'DollarSign',
     color: 'from-emerald-600 to-green-600',
     count: 4
+  },
+  {
+    id: 'cat-9',
+    name: 'How-To',
+    slug: 'how-to',
+    description: 'Step-by-step walkthroughs, AI content creation guides, and practical video editing tutorials.',
+    icon: 'HelpCircle',
+    color: 'from-purple-500 to-indigo-600',
+    count: 1
   }
 ];
 
@@ -2097,6 +2106,187 @@ Ensure resilience against ransomware attacks by strictly maintaining the 3-2-1 r
 - [ ] Endpoint anti-malware protection active on all employee laptops.
 - [ ] Automated daily encrypted 3-2-1 data backups confirmed working.
 - [ ] Phishing awareness training conducted for new hires.`
+  },
+  // 11. How-To: How to Create an AI Swap Video on Runway
+  {
+    id: 'art-11',
+    title: 'How to Create an AI Swap Video on Runway: Step-by-Step Guide',
+    slug: 'how-to-create-an-ai-swap-video-on-runway',
+    excerpt: 'Master AI face swapping, character replacement, and object swapping in videos using Runway ML Gen-2 and Gen-3 Alpha. Learn exact settings, motion brush tricks, prompt formulas, and troubleshooting.',
+    featuredImage: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200',
+    category: 'how-to',
+    tags: ['Runway ML', 'AI Video', 'Video Swap', 'Generative AI', 'Tutorial'],
+    author: authorsList[2],
+    publishedAt: '2026-08-06T10:00:00Z',
+    updatedAt: '2026-08-06T10:00:00Z',
+    status: 'published',
+    readingTimeMinutes: 9,
+    views: 1850,
+    likes: 245,
+    isFeatured: true,
+    isTrending: true,
+    metaTitle: 'How to Create an AI Swap Video on Runway: Step-by-Step Guide (2026)',
+    metaDescription: 'Complete step-by-step tutorial on creating realistic AI face swap and character replacement videos using Runway ML Gen-2 & Gen-3 Alpha. Prompts, camera controls, and motion tips included.',
+    faqs: [
+      {
+        question: 'Can I perform AI face swaps on Runway ML for free?',
+        answer: 'Yes! Runway offers free credits upon account registration that allow you to experiment with Video-to-Video generation and localized Motion Brush inpainting without entering a credit card.'
+      },
+      {
+        question: 'Which model works best for AI video swap: Gen-2 or Gen-3 Alpha?',
+        answer: 'Runway Gen-3 Alpha produces superior temporal consistency, photorealistic lighting, and realistic human facial expressions. Gen-2 remains very useful for quick localized inpainting and custom motion brush control.'
+      },
+      {
+        question: 'What video specifications yield the highest quality face swap results?',
+        answer: 'For best results, upload 1080p footage shot at 24 or 30 fps with high contrast, well-lit facial features, minimal fast camera motion, and clean subject isolation.'
+      },
+      {
+        question: 'Are there ethical guidelines or content safety blocks when generating swaps?',
+        answer: 'Runway strictly enforces safety filters that automatically reject requests involving non-consensual deepfakes, public political figures, or explicit imagery. Always use royalty-free or original media.'
+      }
+    ],
+    content: `
+Generative artificial intelligence has completely revolutionized video post-production. What previously required weeks of manual VFX masking, 3D character rigging, and complex compositing in tools like Nuke or After Effects can now be achieved in minutes using **Runway ML**.
+
+Whether you want to perform a seamless **AI face swap**, replace an actor with a futuristic cyberpunk cyborg, swap background environments, or transform a real-world object into a stylized 3D render, Runway's **Gen-2** and **Gen-3 Alpha** models provide unmatched creative control.
+
+![Filmmaker Editing Video Content on Studio Monitors](https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=1200)
+
+In this comprehensive, human-written guide, we will walk through the exact step-by-step workflow for creating realistic AI swap videos on Runway ML, complete with prompt techniques, camera controls, and troubleshooting methods.
+
+---
+
+## 🛠️ Key Prerequisites Before You Start
+
+Before diving into video generation, prepare the following resources to ensure a smooth workflow:
+
+1. **A Runway ML Account**: Sign up at the official [Runway ML Web Platform (https://runwayml.com)](https://runwayml.com).
+2. **High-Quality Source Video**: A short 3 to 10-second MP4 or MOV video file (1080p resolution recommended) featuring clear lighting and steady subject movement.
+3. **Reference Subject Image (Optional)**: A clean, front-facing reference image if you plan to swap a specific person or character.
+4. **Descriptive Prompt Draft**: A clear text description detailing the target visual aesthetic, lighting, and textures you wish to generate.
+
+\`\`\`
++-----------------------------------------------------------------------+
+|                    RUNWAY AI VIDEO SWAP WORKFLOW                      |
++-------------------++-------------------++-----------------------------+
+| 1. Upload Source  || 2. Mask Subject   || 3. Prompt & Render         |
+| Footage (MP4/MOV) || (Motion Brush)    || (Gen-2 / Gen-3 Alpha)      |
++-------------------++-------------------++-----------------------------+
+\`\`\`
+
+---
+
+## 🚀 Step 1: Access the Runway Studio and Select Your Pipeline
+
+After logging into your dashboard, navigate to the **Generate Videos** section. Runway offers two primary AI swap workflows depending on your objective:
+
+* **Video-to-Video Transformation**: Best for altering the entire video style, environment, or global character aesthetic while preserving underlying motion.
+* **Inpainting & Motion Brush Swapping**: Best for targeted localized face swaps, clothing replacements, or swapping specific background objects while leaving the rest of the clip untouched.
+
+For most realistic facial and character swaps, the **Video-to-Video** mode or localized **Gen-3 Alpha Inpainting** yields the most natural motion tracking.
+
+![Digital Camera and Creative Studio Gear Setup](https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&q=80&w=1200)
+
+---
+
+## 📹 Step 2: Upload and Prepare Your Source Footage
+
+Click **Upload Media** and drag your source video into the workspace canvas:
+
+1. **Trim the Duration**: Keep your initial test clip under **5 to 10 seconds**. Shorter clips render significantly faster and consume fewer generation credits.
+2. **Check Frame Rate**: Ensure your footage runs at **24fps or 30fps**. Variable frame rate (VFR) phone recordings can occasionally cause sync drift.
+3. **Aspect Ratio Selection**: Match your project output to your source—choose **16:9** for cinematic widescreen YouTube releases or **9:16** for Instagram Reels and TikTok shorts.
+
+---
+
+## 🎨 Step 3: Isolate Your Subject Using Motion Brush and Masking
+
+If you are performing a localized face swap or character modification:
+
+1. Open the **Motion Brush / Inpainting Tool** from the editing sidebar.
+2. Select a soft-edged brush size and carefully paint over the target face, head, or subject you wish to swap.
+3. Enable **Auto-Tracking**: Runway's computer vision algorithm will automatically track the masked region across every frame of your video sequence.
+
+> **Pro Tip**: Extend the mask slightly beyond the facial border (including hair and neck) so that lighting transitions blend smoothly with the surrounding background environment.
+
+---
+
+## ✍️ Step 4: Crafting High-Fidelity Prompts for AI Swaps
+
+The text prompt directs Runway on what character or material should replace the masked area. Avoid vague sentences and focus on specific lighting, camera angles, and rendering style keywords.
+
+### Example Prompt Structure for AI Face & Character Swaps:
+
+* **Cinematic Sci-Fi Cyborg Swap**:
+  \`\`\`text
+  Photorealistic cinematic video-to-video swap, face replaced with a sleek polished chrome android cyborg, glowing blue fiber-optic eye accents, volumetric studio illumination, 8k resolution, subsurface scattering, master stroke lighting, maintaining exact head rotation and emotional expression.
+  \`\`\`
+
+* **Photorealistic Character Swap**:
+  \`\`\`text
+  High-definition 35mm film render, a 30-year-old astronaut wearing a matte white tactical helmet and suit, natural ambient shadows, cinematic color grade, photorealistic skin texture, perfect motion coherence matching original video.
+  \`\`\`
+
+---
+
+## ⚙️ Step 5: Configure Motion Strength and Structural Fidelity Settings
+
+To prevent your AI swap video from distorting or losing natural motion, fine-tune these critical parameters in the Runway control panel:
+
+1. **Structural Consistency (Style Weight)**: Set this parameter between **6.0 and 8.0**. Higher values ensure that original body language, head movements, and eye blinks are strictly preserved.
+2. **Motion Slider**: Keep motion set to **3 to 5**. Excessive motion strength introduces surreal fluid artifacts, whereas overly low values lead to static frozen frames.
+3. **Fixed Seed Control**: If you plan to generate multi-shot video sequences with the same character, lock your **Seed Number** to maintain visual consistency across clips.
+
+---
+
+## 🪄 Step 6: Render, Review, and Enhance Video Quality
+
+Click **Generate Video** and allow Runway's GPU server farm to process your request. Once generation completes (typically 60 to 120 seconds):
+
+1. **Preview at Full Screen**: Watch the clip frame-by-frame to verify facial tracking stability and lighting alignment.
+2. **Apply Upscaling**: Click Runway's native **Upscale 4K** button to eliminate compression artifacts and crisp up hair strands and eye reflections.
+3. **Export Your File**: Download the high-bitrate MP4 file ready for post-production in Premiere Pro, DaVinci Resolve, or CapCut.
+
+![High Tech Video Editing Interface Screen](https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200)
+
+---
+
+## 💡 Pro Tips for Unmatched AI Swap Realism
+
+* **Match Source Lighting**: If your target swap character is in a warm golden-hour environment, make sure your source video was also shot in warm sunlight.
+* **Eye Contact Maintenance**: Ensure the actor in your source footage maintains clear eye direction toward the camera lens.
+* **Combine with Audio Lip Syncing**: After exporting your swapped video from Runway, use audio lip-sync AI platforms like ElevenLabs to synchronize custom voice tracks.
+
+---
+
+## 🚨 Troubleshooting Common AI Swap Artifacts
+
+* **Issue: The face flickers between original and AI generated frames.**
+  * *Solution*: Increase the Structural Consistency slider to 8.5 and re-paint the mask with a slightly larger feather boundary.
+* **Issue: Blurring around edges during rapid head turns.**
+  * *Solution*: Trim high-speed motion segments or add motion blur in video editing software prior to uploading to Runway.
+* **Issue: Safety Content Warning Rejection.**
+  * *Solution*: Ensure your prompt does not contain names of celebrities, political figures, or trademarked brand terms.
+
+---
+
+## 🌐 Official Resources and Further Reading
+
+* **Runway Official Platform**: [Visit Runway ML (https://runwayml.com)](https://runwayml.com)
+* **Runway Gen-3 Alpha Documentation**: [Read Gen-3 Guide (https://runwayml.com/gen-3)](https://runwayml.com/gen-3)
+* **EarnInfo AI Video Tutorials**: [Explore EarnInfo Tutorials (https://earninfo.org)](https://earninfo.org)
+
+---
+
+## 📋 Summary Checklist for Creating AI Swap Videos
+
+- [ ] Select steady 1080p source video (5-10 seconds duration).
+- [ ] Upload media to Runway ML and set frame rate/aspect ratio.
+- [ ] Paint precise mask using Motion Brush for target face or object.
+- [ ] Write detailed prompt focusing on lighting, materials, and motion match.
+- [ ] Set Structural Consistency between 6.0 and 8.0.
+- [ ] Render, upscale to 4K, and download final MP4.
+`
   }
 ];
 
