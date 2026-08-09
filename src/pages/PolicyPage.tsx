@@ -68,12 +68,12 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ pageType, onNavigate }) 
               
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">1. Introduction</h2>
               <p>
-                At <strong>EarnInfo Media</strong>, accessible from earninfo.org, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by EarnInfo and how we use it.
+                At <strong>EarnInfo Media</strong>, accessible from earninfos.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by EarnInfo and how we use it.
               </p>
 
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">2. Google DoubleClick DART Cookie &amp; AdSense</h2>
               <p>
-                Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to earninfo.org and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline">https://policies.google.com/technologies/ads</a>.
+                Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to earninfos.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-indigo-600 underline">https://policies.google.com/technologies/ads</a>.
               </p>
 
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">3. Third-Party Privacy Policies &amp; Analytics</h2>
