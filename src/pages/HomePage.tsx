@@ -4,6 +4,7 @@ import { ArticleCard } from '../components/ArticleCard';
 import { Sidebar } from '../components/Sidebar';
 import { AdSenseBanner } from '../components/AdSenseBanner';
 import { JsonLd } from '../components/JsonLd';
+import { NavLink } from '../components/NavLink';
 import { Flame, Sparkles, ArrowRight, Layers, TrendingUp } from 'lucide-react';
 
 interface HomePageProps {
@@ -89,12 +90,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
                       {art.category}
                     </span>
-                    <button
-                      onClick={() => onNavigate(`/article/${art.slug}`)}
-                      className="text-left font-bold text-sm text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-2 mt-1"
+                    <NavLink
+                      to={`/article/${art.slug}`}
+                      onNavigate={onNavigate}
+                      className="text-left block font-bold text-sm text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-2 mt-1"
                     >
                       {art.title}
-                    </button>
+                    </NavLink>
                   </div>
                   <div className="text-[11px] text-slate-400 flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
                     <span>{art.author.name}</span>
@@ -174,21 +176,23 @@ export const HomePage: React.FC<HomePageProps> = ({
                     Explore Categories
                   </h3>
                 </div>
-                <button
-                  onClick={() => onNavigate('/categories')}
+                <NavLink
+                  to="/categories"
+                  onNavigate={onNavigate}
                   className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
                 >
                   <span>View All Categories</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </NavLink>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {categories.map(cat => (
-                  <button
+                  <NavLink
                     key={cat.id}
-                    onClick={() => onNavigate(`/category/${cat.slug}`)}
-                    className="p-4 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-indigo-500 dark:hover:border-indigo-400 shadow-sm hover:shadow-md transition text-left group"
+                    to={`/category/${cat.slug}`}
+                    onNavigate={onNavigate}
+                    className="p-4 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-indigo-500 dark:hover:border-indigo-400 shadow-sm hover:shadow-md transition text-left group block"
                   >
                     <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 block uppercase tracking-wider mb-1">
                       {cat.count || 0} Articles
@@ -196,7 +200,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <h4 className="font-extrabold text-sm text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
                       {cat.name}
                     </h4>
-                  </button>
+                  </NavLink>
                 ))}
               </div>
             </section>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Rss, Shield, CheckCircle2, ArrowRight, MapPin, Phone } from 'lucide-react';
 import { api } from '../services/api';
 import { Category } from '../types';
+import { NavLink } from './NavLink';
 
 interface FooterProps {
   categories: Category[];
@@ -167,12 +168,13 @@ export const Footer: React.FC<FooterProps> = ({ categories, onNavigate }) => {
             <ul className="space-y-2 text-sm text-slate-400">
               {categories.slice(0, 6).map(cat => (
                 <li key={cat.id}>
-                  <button
-                    onClick={() => onNavigate(`/category/${cat.slug}`)}
-                    className="hover:text-indigo-400 transition text-left"
+                  <NavLink
+                    to={`/category/${cat.slug}`}
+                    onNavigate={onNavigate}
+                    className="hover:text-indigo-400 transition text-left block"
                   >
                     {cat.name}
-                  </button>
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -185,34 +187,29 @@ export const Footer: React.FC<FooterProps> = ({ categories, onNavigate }) => {
             </h4>
             <ul className="space-y-2 text-sm text-slate-400">
               <li>
-                <button onClick={() => onNavigate('/')} className="hover:text-indigo-400 transition">
+                <NavLink to="/" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   Latest News
-                </button>
+                </NavLink>
               </li>
               <li>
-                <button onClick={() => onNavigate('/categories')} className="hover:text-indigo-400 transition">
+                <NavLink to="/categories" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   Categories Catalog
-                </button>
+                </NavLink>
               </li>
               <li>
-                <button onClick={() => onNavigate('/authors')} className="hover:text-indigo-400 transition">
+                <NavLink to="/authors" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   Editorial Team &amp; Authors
-                </button>
+                </NavLink>
               </li>
               <li>
-                <button onClick={() => onNavigate('/about')} className="hover:text-indigo-400 transition">
+                <NavLink to="/about" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   About Us &amp; Mission
-                </button>
+                </NavLink>
               </li>
               <li>
-                <button onClick={() => onNavigate('/contact')} className="hover:text-indigo-400 transition">
+                <NavLink to="/contact" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   Contact &amp; Editorial Desk
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/admin')} className="text-indigo-400 hover:text-indigo-300 font-medium transition">
-                  Admin Portal Login
-                </button>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -224,24 +221,24 @@ export const Footer: React.FC<FooterProps> = ({ categories, onNavigate }) => {
             </h4>
             <ul className="space-y-2 text-sm text-slate-400">
               <li>
-                <button onClick={() => onNavigate('/privacy-policy')} className="hover:text-indigo-400 transition">
+                <NavLink to="/privacy-policy" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   Privacy Policy
-                </button>
+                </NavLink>
               </li>
               <li>
-                <button onClick={() => onNavigate('/terms')} className="hover:text-indigo-400 transition">
+                <NavLink to="/terms" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   Terms &amp; Conditions
-                </button>
+                </NavLink>
               </li>
               <li>
-                <button onClick={() => onNavigate('/disclaimer')} className="hover:text-indigo-400 transition">
+                <NavLink to="/disclaimer" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   Editorial Disclaimer
-                </button>
+                </NavLink>
               </li>
               <li>
-                <button onClick={() => onNavigate('/cookie-policy')} className="hover:text-indigo-400 transition">
+                <NavLink to="/cookie-policy" onNavigate={onNavigate} className="hover:text-indigo-400 transition block">
                   Cookie Policy
-                </button>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -251,10 +248,10 @@ export const Footer: React.FC<FooterProps> = ({ categories, onNavigate }) => {
       {/* Copyright & AdSense Compliance Strip */}
       <div className="bg-slate-950 py-6 border-t border-slate-800 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} EarnInfo Media Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} EarnInfo Media. All rights reserved.</p>
           <div className="flex items-center gap-2 text-slate-400">
             <Shield className="w-3.5 h-3.5 text-emerald-400" />
-            <span>GDPR &amp; Privacy Compliant Digital Media</span>
+            <span>Privacy-Respecting Digital Media</span>
           </div>
         </div>
       </div>

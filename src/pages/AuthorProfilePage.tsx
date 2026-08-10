@@ -2,6 +2,7 @@ import React from 'react';
 import { Author, Article } from '../types';
 import { Twitter, Linkedin, Github, Globe, BookOpen } from 'lucide-react';
 import { AuthorAvatar } from '../components/AuthorAvatar';
+import { NavLink } from '../components/NavLink';
 import { ArticleCard } from '../components/ArticleCard';
 
 interface AuthorProfilePageProps {
@@ -28,9 +29,9 @@ export const AuthorProfilePage: React.FC<AuthorProfilePageProps> = ({
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">
         <div className="text-center space-y-4">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Author not found</h1>
-          <button onClick={() => onNavigate('/authors')} className="text-indigo-600 hover:underline">
+          <NavLink to="/authors" onNavigate={onNavigate} className="text-indigo-600 hover:underline">
             View all authors
-          </button>
+          </NavLink>
         </div>
       </div>
     );

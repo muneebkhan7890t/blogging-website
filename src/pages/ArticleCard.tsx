@@ -1,233 +1,226 @@
-import React from 'react';
-import { Clock, Eye, Bookmark, ArrowUpRight, Calendar } from 'lucide-react';
-import { Article } from '../types';
-import { AuthorAvatar } from '../components/AuthorAvatar';
+import React, { useState } from 'react';
+import { Article, Category, Tag } from '../types';
+import { ArticleCard } from '../components/ArticleCard';
+import { Sidebar } from '../components/Sidebar';
+import { AdSenseBanner } from '../components/AdSenseBanner';
+import { JsonLd } from '../components/JsonLd';
+import { NavLink } from '../components/NavLink';
+import { Flame, Sparkles, ArrowRight, Layers, TrendingUp } from 'lucide-react';
 
-interface ArticleCardProps {
-  article: Article;
+interface HomePageProps {
+  articles: Article[];
+  categories: Category[];
+  tags: Tag[];
   onNavigate: (path: string) => void;
-  isBookmarked?: boolean;
-  onToggleBookmark?: (id: string) => void;
-  variant?: 'featured' | 'standard' | 'compact';
+  bookmarks: string[];
+  onToggleBookmark: (id: string) => void;
+  showAds?: boolean;
 }
 
-export const ArticleCard: React.FC<ArticleCardProps> = ({
-  article,
+export const HomePage: React.FC<HomePageProps> = ({
+  articles,
+  categories,
+  tags,
   onNavigate,
-  isBookmarked = false,
+  bookmarks,
   onToggleBookmark,
-  variant = 'standard'
+  showAds = true
 }) => {
-  const formattedDate = new Date(article.publishedAt).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const publishedArticles = articles.filter(a => a.status === 'published');
+  const featuredArticle = publishedArticles.find(a => a.isFeatured) || publishedArticles[0];
+
+  const trendingArticles = publishedArticles.filter(a => a.isTrending || a.views > 2000).slice(0, 3);
+
+  const filteredArticles = publishedArticles.filter(a => {
+    if (a.id === featuredArticle?.id) return false; // Don't duplicate featured article in main grid
+    if (selectedCategory) return a.category === selectedCategory;
+    return true;
   });
 
-  if (variant === 'featured') {
-    return (
-      <div
-        className="group relative bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0"
-        id={`article-featured-${article.id}`}
-      >
-        <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto overflow-hidden">
-          <img
-            src={article.featuredImage}
-            alt={article.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent lg:hidden" />
-          <span className="absolute top-4 left-4 bg-indigo-600 text-white font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-            {article.category}
-          </span>
-        </div>
+  return (
+    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-900/90 text-slate-900 dark:text-slate-100">
+      <JsonLd type="WebSite" />
+      <JsonLd type="Organization" />
 
-        <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-          <div className="space-y-3">
-            <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 font-medium">
-              <span className="flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5 text-indigo-500" />
-                {formattedDate}
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-indigo-500" />
-                {article.readingTimeMinutes} min read
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Eye className="w-3.5 h-3.5 text-indigo-500" />
-                {article.views.toLocaleString()} views
-              </span>
+      {/* Hero Section with Featured Article */}
+      <section className="bg-gradient-to-b from-indigo-950 via-slate-900 to-slate-900 text-white pt-8 pb-12 sm:pb-16 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          {/* Header AdSense Leaderboard Slot */}
+          <AdSenseBanner format="header" showAds={showAds} />
+
+          <div className="flex items-center justify-between border-b border-indigo-900/80 pb-4">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-indigo-400" />
+              <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white">
+                Featured Editorial Story
+              </h1>
             </div>
-
-            <button
-              onClick={() => onNavigate(`/article/${article.slug}`)}
-              className="text-left group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition"
-            >
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
-                {article.title}
-              </h2>
-            </button>
-
-            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base line-clamp-3 leading-relaxed">
-              {article.excerpt}
-            </p>
+            <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-900/60 text-indigo-300 border border-indigo-700">
+              EarnInfo Lead Edition
+            </span>
           </div>
 
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <AuthorAvatar
-                name={article.author.name}
-                avatar={article.author.avatar}
-                className="w-10 h-10 rounded-full"
-                borderClassName="border border-slate-200 dark:border-slate-700"
-              />
-              <div>
-                <span className="text-xs font-bold text-slate-900 dark:text-white block">
-                  {article.author.name}
-                </span>
-                <span className="text-[11px] text-slate-500 dark:text-slate-400 block truncate max-w-[160px]">
-                  {article.author.role}
-                </span>
+          {featuredArticle && (
+            <ArticleCard
+              article={featuredArticle}
+              onNavigate={onNavigate}
+              variant="featured"
+              isBookmarked={bookmarks.includes(featuredArticle.id)}
+              onToggleBookmark={onToggleBookmark}
+            />
+          )}
+        </div>
+      </section>
+
+      {/* Main Content Layout (Grid + Sidebar) */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        {/* Trending Strip */}
+        {trendingArticles.length > 0 && (
+          <section className="mb-12 bg-white dark:bg-slate-800/90 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
+            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-extrabold text-lg pb-3 border-b border-slate-100 dark:border-slate-700">
+              <Flame className="w-5 h-5 text-amber-500" />
+              <h2>Trending Topics Today</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {trendingArticles.map(art => (
+                <div key={art.id} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800 flex flex-col justify-between space-y-3 group">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                      {art.category}
+                    </span>
+                    <NavLink
+                      to={`/article/${art.slug}`}
+                      onNavigate={onNavigate}
+                      className="text-left block font-bold text-sm text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-2 mt-1"
+                    >
+                      {art.title}
+                    </NavLink>
+                  </div>
+                  <div className="text-[11px] text-slate-400 flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+                    <span>{art.author.name}</span>
+                    <span>{art.views.toLocaleString()} views</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main Feed Column */}
+          <div className="lg:col-span-8 space-y-8">
+            {/* Filter Bar */}
+            <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                  {selectedCategory ? `Category: ${selectedCategory.toUpperCase()}` : 'Latest Tech Stories'}
+                </h2>
+              </div>
+
+              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar max-w-full">
+                <button
+                  onClick={() => setSelectedCategory(null)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                    selectedCategory === null
+                      ? 'bg-indigo-600 text-white shadow-sm'
+                      : 'bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                  }`}
+                >
+                  All
+                </button>
+                {categories.slice(0, 5).map(cat => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(selectedCategory === cat.slug ? null : cat.slug)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition ${
+                      selectedCategory === cat.slug
+                        ? 'bg-indigo-600 text-white font-semibold'
+                        : 'bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700'
+                    }`}
+                  >
+                    {cat.name}
+                  </button>
+                ))}
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              {onToggleBookmark && (
-                <button
-                  onClick={() => onToggleBookmark(article.id)}
-                  className={`p-2 rounded-full border transition ${
-                    isBookmarked
-                      ? 'bg-indigo-50 text-indigo-600 border-indigo-200 dark:bg-indigo-950/60 dark:text-indigo-400 dark:border-indigo-800'
-                      : 'border-slate-200 text-slate-400 hover:text-slate-700 dark:border-slate-700 dark:hover:text-slate-200'
-                  }`}
-                  title={isBookmarked ? 'Remove bookmark' : 'Bookmark article'}
-                >
-                  <Bookmark className="w-4 h-4 fill-current" />
-                </button>
-              )}
-              <button
-                onClick={() => onNavigate(`/article/${article.slug}`)}
-                className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs flex items-center gap-1.5 transition shadow-sm"
-              >
-                <span>Read Story</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
+            {/* In-Feed Articles Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {filteredArticles.map((art, idx) => (
+                <React.Fragment key={art.id}>
+                  <ArticleCard
+                    article={art}
+                    onNavigate={onNavigate}
+                    isBookmarked={bookmarks.includes(art.id)}
+                    onToggleBookmark={onToggleBookmark}
+                  />
+                  {/* Insert AdSense In-Article unit after 3rd article */}
+                  {idx === 2 && (
+                    <div className="sm:col-span-2 my-2">
+                      <AdSenseBanner format="in-article" showAds={showAds} />
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
             </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
-  if (variant === 'compact') {
-    return (
-      <div
-        className="group flex gap-4 items-center p-3 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/60 transition"
-        id={`article-compact-${article.id}`}
-      >
-        <img
-          src={article.featuredImage}
-          alt={article.title}
-          className="w-20 h-20 rounded-lg object-cover shrink-0"
-        />
-        <div className="space-y-1 flex-1 min-w-0">
-          <span className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
-            {article.category}
-          </span>
-          <button
-            onClick={() => onNavigate(`/article/${article.slug}`)}
-            className="text-left text-sm font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-2"
-          >
-            {article.title}
-          </button>
-          <div className="text-[11px] text-slate-400 flex items-center gap-2">
-            <span>{formattedDate}</span>
-            <span>•</span>
-            <span>{article.readingTimeMinutes}m read</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
+            {/* Popular Categories Visual Grid */}
+            <section className="pt-8 border-t border-slate-200 dark:border-slate-800 space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Layers className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                    Explore Categories
+                  </h3>
+                </div>
+                <NavLink
+                  to="/categories"
+                  onNavigate={onNavigate}
+                  className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
+                >
+                  <span>View All Categories</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </NavLink>
+              </div>
 
-  // Standard Card
-  return (
-    <div
-      className="group bg-white dark:bg-slate-800/80 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-      id={`article-card-${article.id}`}
-    >
-      <div>
-        <div className="relative aspect-[16/9] overflow-hidden">
-          <img
-            src={article.featuredImage}
-            alt={article.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-          />
-          <span className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white font-semibold text-[11px] px-2.5 py-1 rounded-md uppercase tracking-wider">
-            {article.category}
-          </span>
-          {onToggleBookmark && (
-            <button
-              onClick={() => onToggleBookmark(article.id)}
-              className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition ${
-                isBookmarked
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-slate-900/60 text-white/80 hover:text-white'
-              }`}
-              title={isBookmarked ? 'Remove bookmark' : 'Bookmark article'}
-            >
-              <Bookmark className="w-3.5 h-3.5 fill-current" />
-            </button>
-          )}
-        </div>
-
-        <div className="p-5 space-y-3">
-          <div className="flex items-center gap-2.5 text-xs text-slate-400 font-medium">
-            <span>{formattedDate}</span>
-            <span>•</span>
-            <span>{article.readingTimeMinutes} min read</span>
-            <span>•</span>
-            <span>{article.views.toLocaleString()} views</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {categories.map(cat => (
+                  <NavLink
+                    key={cat.id}
+                    to={`/category/${cat.slug}`}
+                    onNavigate={onNavigate}
+                    className="p-4 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-indigo-500 dark:hover:border-indigo-400 shadow-sm hover:shadow-md transition text-left group block"
+                  >
+                    <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 block uppercase tracking-wider mb-1">
+                      {cat.count || 0} Articles
+                    </span>
+                    <h4 className="font-extrabold text-sm text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
+                      {cat.name}
+                    </h4>
+                  </NavLink>
+                ))}
+              </div>
+            </section>
           </div>
 
-          <button
-            onClick={() => onNavigate(`/article/${article.slug}`)}
-            className="text-left group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition"
-          >
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">
-              {article.title}
-            </h3>
-          </button>
-
-          <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm line-clamp-2 leading-relaxed">
-            {article.excerpt}
-          </p>
+          {/* Sidebar Column */}
+          <div className="lg:col-span-4">
+            <Sidebar
+              articles={publishedArticles}
+              tags={tags}
+              onNavigate={onNavigate}
+              showAds={showAds}
+            />
+          </div>
         </div>
-      </div>
+      </main>
 
-      <div className="px-5 pb-5 pt-2 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/50">
-        <div className="flex items-center gap-2">
-          <AuthorAvatar
-            name={article.author.name}
-            avatar={article.author.avatar}
-            className="w-7 h-7 rounded-full"
-          />
-          <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-            {article.author.name}
-          </span>
-        </div>
-
-        <button
-          onClick={() => onNavigate(`/article/${article.slug}`)}
-          className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-0.5"
-        >
-          <span>Read</span>
-          <ArrowUpRight className="w-3.5 h-3.5" />
-        </button>
+      {/* Footer Banner Slot */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <AdSenseBanner format="footer" showAds={showAds} />
       </div>
     </div>
   );

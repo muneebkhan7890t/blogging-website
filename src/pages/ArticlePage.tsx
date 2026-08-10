@@ -9,6 +9,7 @@ import { CommentSection } from '../components/CommentSection';
 import { FAQAccordion } from '../components/FAQAccordion';
 import { AdSenseBanner } from '../components/AdSenseBanner';
 import { AuthorAvatar } from '../components/AuthorAvatar';
+import { NavLink } from '../components/NavLink';
 import { Sidebar } from '../components/Sidebar';
 import { JsonLd } from '../components/JsonLd';
 import { api } from '../services/api';
@@ -151,12 +152,13 @@ loadArticle();
           <p className="text-sm text-slate-600 dark:text-slate-300">
             The story you are looking for may have been moved or updated.
           </p>
-          <button
-            onClick={() => onNavigate('/')}
-            className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition"
+          <NavLink
+            to="/"
+            onNavigate={onNavigate}
+            className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition inline-block"
           >
             Return to Home
-          </button>
+          </NavLink>
         </div>
       </div>
     );
@@ -204,14 +206,15 @@ loadArticle();
             {breadcrumbs.map((b, i) => (
               <React.Fragment key={i}>
                 {i > 0 && <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0" />}
-                <button
-                  onClick={() => onNavigate(b.url)}
+                <NavLink
+                  to={b.url}
+                  onNavigate={onNavigate}
                   className={`hover:text-white transition whitespace-nowrap ${
                     i === breadcrumbs.length - 1 ? 'text-indigo-400 font-semibold line-clamp-1 max-w-[200px]' : ''
                   }`}
                 >
                   {b.name}
-                </button>
+                </NavLink>
               </React.Fragment>
             ))}
           </nav>
@@ -240,13 +243,14 @@ loadArticle();
                   borderClassName="border-2 border-indigo-500"
                 />
                 <div>
-                  <button
-                    onClick={() => onNavigate(`/author/${article.author.slug}`)}
+                  <NavLink
+                    to={`/author/${article.author.slug}`}
+                    onNavigate={onNavigate}
                     className="text-sm font-bold text-white flex items-center gap-1 hover:underline"
                   >
                     {article.author.name}
                     <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  </button>
+                  </NavLink>
                   <span className="text-xs text-slate-400 block">{article.author.role}</span>
                 </div>
               </div>
@@ -365,13 +369,14 @@ loadArticle();
             <div className="pt-6 border-t border-slate-200 dark:border-slate-700 flex items-center gap-2 flex-wrap">
               <span className="text-xs font-bold text-slate-500 uppercase">Tags:</span>
               {article.tags.map(t => (
-                <button
+                <NavLink
                   key={t}
-                  onClick={() => onNavigate(`/search?tag=${encodeURIComponent(t)}`)}
+                  to={`/search?tag=${encodeURIComponent(t)}`}
+                  onNavigate={onNavigate}
                   className="px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-indigo-600 hover:text-white transition"
                 >
                   #{t}
-                </button>
+                </NavLink>
               ))}
             </div>
 
@@ -390,12 +395,13 @@ loadArticle();
                 <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block">
                   Written by {article.author.role}
                 </span>
-                <button
-                  onClick={() => onNavigate(`/author/${article.author.slug}`)}
+                <NavLink
+                  to={`/author/${article.author.slug}`}
+                  onNavigate={onNavigate}
                   className="text-lg font-extrabold text-slate-900 dark:text-white hover:underline block"
                 >
                   {article.author.name}
-                </button>
+                </NavLink>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {article.author.bio}
                 </p>
@@ -410,9 +416,10 @@ loadArticle();
             {/* Prev / Next Article Navigation Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
               {prevArticle ? (
-                <button
-                  onClick={() => onNavigate(`/article/${prevArticle.slug}`)}
-                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition text-left space-y-1 group"
+                <NavLink
+                  to={`/article/${prevArticle.slug}`}
+                  onNavigate={onNavigate}
+                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition text-left space-y-1 group block"
                 >
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
                     <ArrowLeft className="w-3 h-3" />
@@ -421,13 +428,14 @@ loadArticle();
                   <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 line-clamp-2">
                     {prevArticle.title}
                   </span>
-                </button>
+                </NavLink>
               ) : <div />}
 
               {nextArticle ? (
-                <button
-                  onClick={() => onNavigate(`/article/${nextArticle.slug}`)}
-                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition text-right space-y-1 group sm:col-start-2"
+                <NavLink
+                  to={`/article/${nextArticle.slug}`}
+                  onNavigate={onNavigate}
+                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition text-right space-y-1 group sm:col-start-2 block"
                 >
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-end gap-1">
                     <span>Next Story</span>
@@ -436,7 +444,7 @@ loadArticle();
                   <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 line-clamp-2">
                     {nextArticle.title}
                   </span>
-                </button>
+                </NavLink>
               ) : <div />}
             </div>
 
@@ -448,10 +456,11 @@ loadArticle();
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {relatedArticles.map(rel => (
-                    <div
+                    <NavLink
                       key={rel.id}
-                      onClick={() => onNavigate(`/article/${rel.slug}`)}
-                      className="cursor-pointer group p-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 space-y-2 hover:border-indigo-500 transition"
+                      to={`/article/${rel.slug}`}
+                      onNavigate={onNavigate}
+                      className="cursor-pointer group p-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 space-y-2 hover:border-indigo-500 transition block"
                     >
                       <img
                         src={rel.featuredImage}
@@ -461,7 +470,7 @@ loadArticle();
                       <h4 className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 line-clamp-2">
                         {rel.title}
                       </h4>
-                    </div>
+                    </NavLink>
                   ))}
                 </div>
               </section>

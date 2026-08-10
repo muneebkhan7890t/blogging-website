@@ -2,6 +2,7 @@ import React from 'react';
 import { Author, Article } from '../types';
 import { UserCheck, Twitter, Linkedin, Github, Globe, BookOpen } from 'lucide-react';
 import { AuthorAvatar } from '../components/AuthorAvatar';
+import { NavLink } from '../components/NavLink';
 
 interface AuthorsPageProps {
   authors: Author[];
@@ -95,12 +96,13 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({
                       )}
                     </div>
                   </div>
-                  <button
-                    onClick={() => onNavigate(`/author/${author.slug}`)}
-                    className="w-full text-center text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline py-1"
+                  <NavLink
+                    to={`/author/${author.slug}`}
+                    onNavigate={onNavigate}
+                    className="w-full text-center block text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline py-1"
                   >
                     View Full Profile
-                  </button>
+                  </NavLink>
                 </div>
               </div>
             );

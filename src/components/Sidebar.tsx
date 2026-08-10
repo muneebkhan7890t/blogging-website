@@ -3,6 +3,7 @@ import { TrendingUp, Flame, Tag as TagIcon, Mail, Check, ArrowRight } from 'luci
 import { Article, Tag } from '../types';
 import { AdSenseBanner } from './AdSenseBanner';
 import { api } from '../services/api';
+import { NavLink } from './NavLink';
 
 interface SidebarProps {
   articles: Article[];
@@ -108,12 +109,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 0{idx + 1}
               </span>
               <div className="space-y-1 min-w-0 flex-1">
-                <button
-                  onClick={() => onNavigate(`/article/${art.slug}`)}
-                  className="text-left font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-2 leading-snug"
+                <NavLink
+                  to={`/article/${art.slug}`}
+                  onNavigate={onNavigate}
+                  className="text-left block font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-2 leading-snug"
                 >
                   {art.title}
-                </button>
+                </NavLink>
                 <div className="text-[11px] text-slate-400 flex items-center gap-2">
                   <span>{art.views.toLocaleString()} views</span>
                   <span>•</span>
@@ -136,13 +138,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         <div className="flex flex-wrap gap-2">
           {tags.map(tag => (
-            <button
+            <NavLink
               key={tag.id}
-              onClick={() => onNavigate(`/search?tag=${encodeURIComponent(tag.slug)}`)}
+              to={`/search?tag=${encodeURIComponent(tag.slug)}`}
+              onNavigate={onNavigate}
               className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700/60 text-slate-700 dark:text-slate-300 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition"
             >
               #{tag.name}
-            </button>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -165,12 +168,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 className="w-14 h-14 rounded-lg object-cover shrink-0"
               />
               <div className="min-w-0 flex-1">
-                <button
-                  onClick={() => onNavigate(`/article/${art.slug}`)}
-                  className="text-left text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-2"
+                <NavLink
+                  to={`/article/${art.slug}`}
+                  onNavigate={onNavigate}
+                  className="text-left block text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition line-clamp-2"
                 >
                   {art.title}
-                </button>
+                </NavLink>
                 <span className="text-[10px] text-slate-400 block mt-0.5">
                   {new Date(art.publishedAt).toLocaleDateString()}
                 </span>

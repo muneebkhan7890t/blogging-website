@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Home, AlertCircle } from 'lucide-react';
 import { Article } from '../types';
+import { NavLink } from '../components/NavLink';
 
 interface NotFoundPageProps {
   onNavigate: (path: string) => void;
@@ -49,13 +50,14 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate, articles
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
         </form>
 
-        <button
-          onClick={() => onNavigate('/')}
-          className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition flex items-center gap-1.5 mx-auto"
+        <NavLink
+          to="/"
+          onNavigate={onNavigate}
+          className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition flex items-center gap-1.5 mx-auto w-fit"
         >
           <Home className="w-4 h-4" />
           <span>Return to Homepage</span>
-        </button>
+        </NavLink>
 
         {trending.length > 0 && (
           <div className="pt-6 border-t border-slate-100 dark:border-slate-700 text-left space-y-3">
@@ -64,13 +66,14 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate, articles
             </h3>
             <div className="space-y-2">
               {trending.map(art => (
-                <button
+                <NavLink
                   key={art.id}
-                  onClick={() => onNavigate(`/article/${art.slug}`)}
+                  to={`/article/${art.slug}`}
+                  onNavigate={onNavigate}
                   className="w-full text-left p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700/50 text-xs font-semibold text-slate-800 dark:text-slate-200 truncate transition block"
                 >
                   • {art.title}
-                </button>
+                </NavLink>
               ))}
             </div>
           </div>

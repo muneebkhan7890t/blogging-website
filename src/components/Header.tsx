@@ -11,10 +11,10 @@ import {
   BookOpen,
   ChevronDown,
   Rss,
-  Bookmark,
-  Lock
+  Bookmark
 } from 'lucide-react';
 import { Category } from '../types';
+import { NavLink } from './NavLink';
 
 interface HeaderProps {
   categories: Category[];
@@ -93,15 +93,6 @@ export const Header: React.FC<HeaderProps> = ({
             <Rss className="w-3 h-3" />
             <span>RSS</span>
           </a>
-          <button
-            onClick={() => onNavigate('/admin')}
-            className="flex items-center gap-1 text-slate-400 hover:text-indigo-400 transition text-[11px] font-medium border-l border-slate-800 pl-3"
-            title="Editorial Staff & Admin Login"
-            id="header-admin-link"
-          >
-            <Lock className="w-3 h-3 text-slate-400" />
-            <span>Staff Login</span>
-          </button>
         </div>
       </div>
 
@@ -110,8 +101,9 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
           <div className="flex items-center gap-8">
-            <button
-              onClick={() => onNavigate('/')}
+            <NavLink
+              to="/"
+              onNavigate={onNavigate}
               className="flex items-center gap-2.5 text-left group"
               id="brand-logo"
             >
@@ -126,16 +118,17 @@ export const Header: React.FC<HeaderProps> = ({
                   Earn Money &amp; Tech Guides
                 </span>
               </div>
-            </button>
+            </NavLink>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center space-x-1 font-medium text-sm text-slate-700 dark:text-slate-300">
-              <button
-                onClick={() => onNavigate('/')}
+              <NavLink
+                to="/"
+                onNavigate={onNavigate}
                 className="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
               >
                 Home
-              </button>
+              </NavLink>
 
               {/* Categories Dropdown */}
               <div className="relative">
@@ -150,23 +143,21 @@ export const Header: React.FC<HeaderProps> = ({
 
                 {categoriesDropdownOpen && (
                   <div className="absolute top-full left-0 mt-1 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-2 z-50">
-                    <button
-                      onClick={() => {
-                        onNavigate('/categories');
-                        setCategoriesDropdownOpen(false);
-                      }}
+                    <NavLink
+                      to="/categories"
+                      onNavigate={onNavigate}
+                      onClick={() => setCategoriesDropdownOpen(false)}
                       className="w-full text-left px-4 py-2 text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 border-b border-slate-100 dark:border-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition flex items-center justify-between"
                     >
                       <span>View All Categories</span>
                       <BookOpen className="w-3.5 h-3.5" />
-                    </button>
+                    </NavLink>
                     {categories.map(cat => (
-                      <button
+                      <NavLink
                         key={cat.id}
-                        onClick={() => {
-                          onNavigate(`/category/${cat.slug}`);
-                          setCategoriesDropdownOpen(false);
-                        }}
+                        to={`/category/${cat.slug}`}
+                        onNavigate={onNavigate}
+                        onClick={() => setCategoriesDropdownOpen(false)}
                         className={`w-full text-left px-4 py-2.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-between transition ${
                           currentCategory === cat.slug
                             ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50/50 dark:bg-indigo-950/30'
@@ -177,30 +168,33 @@ export const Header: React.FC<HeaderProps> = ({
                         <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">
                           {cat.count || 0}
                         </span>
-                      </button>
+                      </NavLink>
                     ))}
                   </div>
                 )}
               </div>
 
-              <button
-                onClick={() => onNavigate('/authors')}
+              <NavLink
+                to="/authors"
+                onNavigate={onNavigate}
                 className="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
               >
                 Authors
-              </button>
-              <button
-                onClick={() => onNavigate('/about')}
+              </NavLink>
+              <NavLink
+                to="/about"
+                onNavigate={onNavigate}
                 className="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
               >
                 About
-              </button>
-              <button
-                onClick={() => onNavigate('/contact')}
+              </NavLink>
+              <NavLink
+                to="/contact"
+                onNavigate={onNavigate}
                 className="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
               >
                 Contact
-              </button>
+              </NavLink>
             </nav>
           </div>
 
@@ -220,9 +214,10 @@ export const Header: React.FC<HeaderProps> = ({
             </form>
 
             {/* Bookmarks Quick Link */}
-            <button
-              onClick={() => onNavigate('/search?bookmarks=true')}
-              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 relative transition"
+            <NavLink
+              to="/search?bookmarks=true"
+              onNavigate={onNavigate}
+              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 relative transition inline-flex items-center"
               title="Saved Bookmarks"
               id="bookmarks-btn"
             >
@@ -232,7 +227,7 @@ export const Header: React.FC<HeaderProps> = ({
                   {savedBookmarksCount}
                 </span>
               )}
-            </button>
+            </NavLink>
 
             {/* Dark Mode Toggle */}
             <button
@@ -259,8 +254,9 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Category Pills Bar on Desktop */}
       <div className="hidden lg:block border-t border-slate-200/60 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-900/50 py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 overflow-x-auto no-scrollbar">
-          <button
-            onClick={() => onNavigate('/')}
+          <NavLink
+            to="/"
+            onNavigate={onNavigate}
             className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition ${
               !currentCategory
                 ? 'bg-indigo-600 text-white shadow-sm'
@@ -268,11 +264,12 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
           >
             All Top News
-          </button>
+          </NavLink>
           {categories.map(cat => (
-            <button
+            <NavLink
               key={cat.id}
-              onClick={() => onNavigate(`/category/${cat.slug}`)}
+              to={`/category/${cat.slug}`}
+              onNavigate={onNavigate}
               className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition ${
                 currentCategory === cat.slug
                   ? 'bg-indigo-600 text-white shadow-sm font-semibold'
@@ -280,7 +277,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               {cat.name}
-            </button>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -300,77 +297,61 @@ export const Header: React.FC<HeaderProps> = ({
           </form>
 
           <div className="space-y-1 font-medium text-slate-700 dark:text-slate-300">
-            <button
-              onClick={() => {
-                onNavigate('/');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+            <NavLink
+              to="/"
+              onNavigate={onNavigate}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-left block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               Home
-            </button>
-            <button
-              onClick={() => {
-                onNavigate('/categories');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+            </NavLink>
+            <NavLink
+              to="/categories"
+              onNavigate={onNavigate}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-left block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               Categories Catalogue
-            </button>
-            <button
-              onClick={() => {
-                onNavigate('/authors');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+            </NavLink>
+            <NavLink
+              to="/authors"
+              onNavigate={onNavigate}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-left block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               Editorial Authors
-            </button>
-            <button
-              onClick={() => {
-                onNavigate('/about');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+            </NavLink>
+            <NavLink
+              to="/about"
+              onNavigate={onNavigate}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-left block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               About Us
-            </button>
-            <button
-              onClick={() => {
-                onNavigate('/contact');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+            </NavLink>
+            <NavLink
+              to="/contact"
+              onNavigate={onNavigate}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-left block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               Contact Us
-            </button>
-            <button
-              onClick={() => {
-                onNavigate('/admin');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs flex items-center gap-1.5"
-            >
-              <Lock className="w-3.5 h-3.5 text-slate-400" />
-              <span>Staff Login</span>
-            </button>
+            </NavLink>
           </div>
 
           <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
             <p className="text-xs font-semibold uppercase text-slate-400 mb-2">Browse Categories</p>
             <div className="flex flex-wrap gap-1.5">
               {categories.map(cat => (
-                <button
+                <NavLink
                   key={cat.id}
-                  onClick={() => {
-                    onNavigate(`/category/${cat.slug}`);
-                    setMobileMenuOpen(false);
-                  }}
+                  to={`/category/${cat.slug}`}
+                  onNavigate={onNavigate}
+                  onClick={() => setMobileMenuOpen(false)}
                   className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
                 >
                   {cat.name}
-                </button>
+                </NavLink>
               ))}
             </div>
           </div>
