@@ -9,6 +9,7 @@ import { CategoryPage } from './pages/CategoryPage';
 import { CategoriesOverviewPage } from './pages/CategoriesOverviewPage';
 import { SearchPage } from './pages/SearchPage';
 import { AuthorsPage } from './pages/AuthorsPage';
+import { AuthorProfilePage } from './pages/AuthorProfilePage';
 import { PolicyPage } from './pages/PolicyPage';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -215,6 +216,21 @@ export default function App() {
           authors={authors}
           articles={articles}
           onNavigate={handleNavigate}
+        />
+      );
+    }
+
+    // 6b. Individual Author Profile: /author/:slug
+    if (path.startsWith('/author/')) {
+      const slug = decodeURIComponent(path.replace('/author/', '')).replace(/\/+$/, '').trim();
+      return (
+        <AuthorProfilePage
+          slug={slug}
+          authors={authors}
+          articles={articles}
+          onNavigate={handleNavigate}
+          bookmarks={bookmarks}
+          onToggleBookmark={handleToggleBookmark}
         />
       );
     }

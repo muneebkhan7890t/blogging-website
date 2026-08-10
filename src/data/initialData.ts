@@ -2,49 +2,13 @@ import { Article, Category, Tag, Author, Comment } from '../types';
 
 export const authorsList: Author[] = [
   {
-    id: 'author-1',
-    name: 'Dr. Elena Rostova',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
-    role: 'Principal AI Researcher & Tech Editor',
-    bio: 'Former ML Lead at AI Horizon. Elena writes on Large Language Models, agentic AI systems, and machine learning infrastructure.',
-    socials: {
-      twitter: 'https://twitter.com',
-      linkedin: 'https://linkedin.com',
-      github: 'https://github.com'
-    }
-  },
-  {
-    id: 'author-2',
-    name: 'Marcus Vance',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
-    role: 'Cybersecurity Analyst & Systems Architect',
-    bio: 'Certified Ethical Hacker with over 12 years of experience in cloud security, zero-trust architecture, and devsecops.',
-    socials: {
-      twitter: 'https://twitter.com',
-      github: 'https://github.com'
-    }
-  },
-  {
-    id: 'author-3',
-    name: 'Sarah Chen',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200',
-    role: 'Senior Software Engineer & Tech Columnist',
-    bio: 'Full-stack software engineer specializing in modern React ecosystem, web performance optimization, and developer tooling.',
-    socials: {
-      linkedin: 'https://linkedin.com',
-      website: 'https://example.com'
-    }
-  },
-  {
-    id: 'author-4',
-    name: 'Ahmad Raza',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
-    role: 'Digital Marketing Strategist & Career Consultant',
-    bio: 'Experienced career advisor and online business consultant guiding students and professionals toward global scholarships and digital income streams.',
-    socials: {
-      linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com'
-    }
+    id: 'author-muneeb-khan',
+    slug: 'muneeb-khan',
+    name: 'Muneeb Khan',
+    role: 'Founder & Editor of EarnInfo',
+    bio: 'Founder and editor of EarnInfo.'
+    // No avatar: intentionally no photo rather than a stock-photo stand-in.
+    // No socials: add real links here once provided.
   }
 ];
 

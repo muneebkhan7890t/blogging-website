@@ -8,6 +8,7 @@ import { ShareButtons } from '../components/ShareButtons';
 import { CommentSection } from '../components/CommentSection';
 import { FAQAccordion } from '../components/FAQAccordion';
 import { AdSenseBanner } from '../components/AdSenseBanner';
+import { AuthorAvatar } from '../components/AuthorAvatar';
 import { Sidebar } from '../components/Sidebar';
 import { JsonLd } from '../components/JsonLd';
 import { api } from '../services/api';
@@ -232,16 +233,20 @@ loadArticle();
             {/* Author Bar */}
             <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <img
-                  src={article.author.avatar}
-                  alt={article.author.name}
-                  className="w-11 h-11 rounded-full object-cover border-2 border-indigo-500"
+                <AuthorAvatar
+                  name={article.author.name}
+                  avatar={article.author.avatar}
+                  className="w-11 h-11 rounded-full"
+                  borderClassName="border-2 border-indigo-500"
                 />
                 <div>
-                  <span className="text-sm font-bold text-white block flex items-center gap-1">
+                  <button
+                    onClick={() => onNavigate(`/author/${article.author.slug}`)}
+                    className="text-sm font-bold text-white flex items-center gap-1 hover:underline"
+                  >
                     {article.author.name}
                     <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  </span>
+                  </button>
                   <span className="text-xs text-slate-400 block">{article.author.role}</span>
                 </div>
               </div>
@@ -375,18 +380,22 @@ loadArticle();
 
             {/* Author Bio Box */}
             <div className="p-6 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/60 flex items-start gap-4">
-              <img
-                src={article.author.avatar}
-                alt={article.author.name}
-                className="w-16 h-16 rounded-full object-cover border-2 border-indigo-500 shrink-0"
+              <AuthorAvatar
+                name={article.author.name}
+                avatar={article.author.avatar}
+                className="w-16 h-16 rounded-full shrink-0"
+                borderClassName="border-2 border-indigo-500"
               />
               <div className="space-y-1">
                 <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block">
                   Written by {article.author.role}
                 </span>
-                <h4 className="text-lg font-extrabold text-slate-900 dark:text-white">
+                <button
+                  onClick={() => onNavigate(`/author/${article.author.slug}`)}
+                  className="text-lg font-extrabold text-slate-900 dark:text-white hover:underline block"
+                >
                   {article.author.name}
-                </h4>
+                </button>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {article.author.bio}
                 </p>

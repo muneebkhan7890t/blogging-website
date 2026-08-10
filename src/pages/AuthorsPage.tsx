@@ -1,6 +1,7 @@
 import React from 'react';
 import { Author, Article } from '../types';
 import { UserCheck, Twitter, Linkedin, Github, Globe, BookOpen } from 'lucide-react';
+import { AuthorAvatar } from '../components/AuthorAvatar';
 
 interface AuthorsPageProps {
   authors: Author[];
@@ -23,11 +24,11 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black text-white">
-            Editorial Team &amp; Columnists
+            Editorial Team
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
-            Meet the domain experts, researchers, and engineers driving TechPulse coverage.
+            Meet the person behind EarnInfo's coverage.
           </p>
         </div>
       </header>
@@ -43,10 +44,11 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <img
-                      src={author.avatar}
-                      alt={author.name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-indigo-500 shadow-md"
+                    <AuthorAvatar
+                      name={author.name}
+                      avatar={author.avatar}
+                      className="w-16 h-16 rounded-full"
+                      borderClassName="border-2 border-indigo-500 shadow-md"
                     />
                     <div>
                       <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
@@ -93,6 +95,12 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({
                       )}
                     </div>
                   </div>
+                  <button
+                    onClick={() => onNavigate(`/author/${author.slug}`)}
+                    className="w-full text-center text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline py-1"
+                  >
+                    View Full Profile
+                  </button>
                 </div>
               </div>
             );

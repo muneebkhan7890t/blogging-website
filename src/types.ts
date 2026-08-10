@@ -2,8 +2,9 @@ export type ArticleStatus = 'published' | 'draft' | 'scheduled';
 
 export interface Author {
   id: string;
+  slug: string;
   name: string;
-  avatar: string;
+  avatar?: string;
   role: string;
   bio: string;
   socials?: {

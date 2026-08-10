@@ -408,6 +408,58 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml, author
     }
   }
   // ------------------------------------------------------------------
+  // 1b. AUTHOR PROFILE ROUTE: /author/:slug
+  // ------------------------------------------------------------------
+  else if (normalizedPath.startsWith('/author/')) {
+    const rawAuthorSlug = normalizedPath.replace('/author/', '');
+    const authorSlug = decodeURIComponent(rawAuthorSlug).replace(/\/+$/, '').trim().toLowerCase();
+    const authorMatch = authors.find(a => a.slug === authorSlug);
+
+    if (!authorMatch) {
+      statusCode = 404;
+      pageTitle = `Author Not Found | ${siteName}`;
+      bodyContentHtml = `<div style="text-align:center;padding:80px 24px;font-family:sans-serif;"><h1>Author Not Found</h1></div>`;
+    } else {
+      statusCode = 200;
+      pageTitle = `${authorMatch.name} | ${siteName}`;
+      metaDesc = escapeHtml(authorMatch.bio || `Articles by ${authorMatch.name} on ${siteName}.`);
+      canonicalUrl = `https://earninfos.com/author/${authorMatch.slug}`;
+
+      const authorArticlesList = db.articles.filter(a => a.author?.slug === authorMatch.slug && (!a.status || a.status === 'published'));
+
+      const articleCards = authorArticlesList.map(a => `
+        <div style="border:1px solid #e2e8f0;border-radius:12px;padding:16px;">
+          <a href="/article/${a.slug}" style="color:#1e293b;text-decoration:none;font-weight:700;">${escapeHtml(a.title)}</a>
+        </div>
+      `).join('\n');
+
+      bodyContentHtml = `
+        <div style="font-family:sans-serif;">
+          <header style="background:#0f172a;color:#fff;padding:48px 24px;text-align:center;">
+            <h1 style="font-size:32px;margin:0 0 4px;">${escapeHtml(authorMatch.name)}</h1>
+            <p style="color:#a5b4fc;margin:0 0 12px;font-weight:600;">${escapeHtml(authorMatch.role)}</p>
+            ${authorMatch.bio ? `<p style="color:#94a3b8;max-width:500px;margin:0 auto;">${escapeHtml(authorMatch.bio)}</p>` : ''}
+          </header>
+          <main style="max-width:900px;margin:0 auto;padding:48px 24px;">
+            <h2 style="font-size:20px;margin-bottom:16px;">Articles by ${escapeHtml(authorMatch.name)} (${authorArticlesList.length})</h2>
+            <div style="display:grid;gap:16px;">${articleCards}</div>
+          </main>
+        </div>
+      `;
+
+      // Only truthful, explicitly-confirmed fields go into structured data —
+      // no fabricated credentials, no invented jobTitle beyond what's set.
+      extraHead += `<script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: authorMatch.name,
+        jobTitle: authorMatch.role,
+        url: canonicalUrl,
+        ...(authorMatch.bio ? { description: authorMatch.bio } : {})
+      }).replace(/</g, '\\u003c')}</script>`;
+    }
+  }
+  // ------------------------------------------------------------------
   // 2. CATEGORY ROUTE: /category/:slug
   // ------------------------------------------------------------------
   else if (normalizedPath.startsWith('/category/')) {

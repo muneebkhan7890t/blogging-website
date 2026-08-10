@@ -488,7 +488,7 @@ app.post('/api/ai/generate-article', async (req, res) => {
 
     const ai = getGeminiClient();
 
-    const systemPrompt = `You are an expert technical AI editor and blog writer for a top-tier tech publication (TechPulse).
+    const systemPrompt = `You are an expert technical AI editor and blog writer for a top-tier tech publication (EarnInfo).
 Write a professional, in-depth Markdown article about "${topic || prompt}".
 Category: ${category || 'Technology'}.
 

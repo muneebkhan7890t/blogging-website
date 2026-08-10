@@ -240,7 +240,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
             <h1 className="text-2xl font-black">Admin CMS Access</h1>
             <p className="text-xs text-slate-400">
-              TechPulse Publishing Management System
+              EarnInfo Publishing Management System
             </p>
           </div>
 
@@ -296,7 +296,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             TP
           </div>
           <div>
-            <h1 className="text-base font-extrabold text-white">TechPulse Admin Console</h1>
+            <h1 className="text-base font-extrabold text-white">EarnInfo Admin Console</h1>
             <span className="text-[10px] text-emerald-400 font-semibold block">
               Single-Admin Publishing Mode
             </span>
