@@ -34,6 +34,21 @@ function escapeHtml(str: string): string {
 }
 
 const CONTACT_EMAIL = 'muneebkhan7890t@gmail.com';
+
+// Article slugs that existed at some point (Google crawled/discovered them)
+// but were never actually published and have no equivalent replacement.
+// These get a 410 Gone instead of a generic 404 — 410 is an explicit
+// "permanently removed, stop retrying" signal, which Google documents as
+// clearing a URL from the index/crawl queue faster than an ambiguous 404
+// that a crawler may periodically re-check. Add a slug here only when it's
+// confirmed dead with nothing to redirect it to — never as a blind default.
+const GONE_ARTICLE_SLUGS = new Set([
+  'monetize-expertise-substack-paid-newsletters',
+  'realistic-ways-to-earn-money-online-2026',
+  'earn-money-freelance-technical-writing-prompt-engineering',
+  'high-intent-affiliate-marketing-guide',
+  'building-micro-saas-digital-products-gumroad'
+]);
 const CONTACT_PHONE = '+923149157941';
 const CONTACT_LOCATION = 'Nowshera, Pakistan';
 
@@ -220,16 +235,21 @@ export async function renderPageHtml({ reqUrl, hostUrl, db, templateHtml, author
     const isPublished = article && (!article.status || article.status === 'published');
 
     if (!article || !isPublished) {
-      statusCode = 404;
-      pageTitle = `404 - Article Not Found | ${siteName}`;
-      metaDesc = 'The requested article could not be found or has been moved.';
+      const isGone = GONE_ARTICLE_SLUGS.has(cleanSlug);
+      statusCode = isGone ? 410 : 404;
+      pageTitle = isGone
+        ? `410 - Article Permanently Removed | ${siteName}`
+        : `404 - Article Not Found | ${siteName}`;
+      metaDesc = isGone
+        ? 'This article has been permanently removed and is not coming back.'
+        : 'The requested article could not be found or has been moved.';
       extraHead = `<meta name="robots" content="noindex, follow">`;
       bodyContentHtml = `
         <div class="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-slate-900 p-6 text-center">
           <div class="max-w-md bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-            <h1 class="text-6xl font-black text-indigo-600 mb-2">404</h1>
-            <h2 class="text-2xl font-bold mb-4">Article Not Found</h2>
-            <p class="text-slate-600 mb-6">Sorry, the article you are looking for does not exist or has been removed.</p>
+            <h1 class="text-6xl font-black text-indigo-600 mb-2">${isGone ? '410' : '404'}</h1>
+            <h2 class="text-2xl font-bold mb-4">${isGone ? 'Article Permanently Removed' : 'Article Not Found'}</h2>
+            <p class="text-slate-600 mb-6">${isGone ? 'This article has been permanently removed and will not be published.' : 'Sorry, the article you are looking for does not exist or has been removed.'}</p>
             <a href="/" class="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition">Return to Home</a>
           </div>
         </div>
