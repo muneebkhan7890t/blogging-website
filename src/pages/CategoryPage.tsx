@@ -4,6 +4,7 @@ import { ArticleCard } from '../components/ArticleCard';
 import { Sidebar } from '../components/Sidebar';
 import { AdSenseBanner } from '../components/AdSenseBanner';
 import { Folder, Layers } from 'lucide-react';
+import AdUnit from "../components/AdUnit";
 
 interface CategoryPageProps {
   categorySlug: string;
@@ -80,7 +81,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                     />
                     {idx === 1 && (
                       <div className="sm:col-span-2 my-2">
-                        <AdSenseBanner format="in-article" showAds={showAds} />
+                        <AdUnit />
                       </div>
                     )}
                   </React.Fragment>

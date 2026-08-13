@@ -13,6 +13,7 @@ import { NavLink } from '../components/NavLink';
 import { Sidebar } from '../components/Sidebar';
 import { JsonLd } from '../components/JsonLd';
 import { api } from '../services/api';
+import AdUnit from "../components/AdUnit";
 import {
   Clock,
   Eye,
@@ -309,7 +310,7 @@ loadArticle();
             <TableOfContents markdownContent={article.content} />
 
             {/* In-Article Ad Placement */}
-            <AdSenseBanner format="in-article" showAds={showAds} />
+            <AdUnit />
 
             {/* Markdown Body */}
             <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:scroll-mt-24 prose-headings:font-bold prose-h2:text-2xl prose-h2:border-b prose-h2:border-slate-200 prose-h2:dark:border-slate-700 prose-h2:pb-2 prose-h2:mt-8 prose-h3:text-xl prose-p:text-slate-700 prose-p:dark:text-slate-300 prose-p:leading-relaxed prose-pre:bg-slate-900 prose-pre:text-slate-100 prose-pre:rounded-xl">

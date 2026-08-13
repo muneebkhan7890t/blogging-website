@@ -6,6 +6,7 @@ import { AdSenseBanner } from '../components/AdSenseBanner';
 import { JsonLd } from '../components/JsonLd';
 import { NavLink } from '../components/NavLink';
 import { Flame, Sparkles, ArrowRight, Layers, TrendingUp } from 'lucide-react';
+import AdUnit from "../components/AdUnit";
 
 interface HomePageProps {
   articles: Article[];
@@ -48,7 +49,9 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="bg-gradient-to-b from-indigo-950 via-slate-900 to-slate-900 text-white pt-8 pb-12 sm:pb-16 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Header AdSense Leaderboard Slot */}
-          <AdSenseBanner format="header" showAds={showAds} />
+          <AdUnit />
+
+
 
           <div className="flex items-center justify-between border-b border-indigo-900/80 pb-4">
             <div className="flex items-center gap-2">
@@ -220,7 +223,9 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* Footer Banner Slot */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <AdSenseBanner format="footer" showAds={showAds} />
+        <AdUnit />
+
+
       </div>
     </div>
   );

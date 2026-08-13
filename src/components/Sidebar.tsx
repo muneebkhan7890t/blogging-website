@@ -4,6 +4,8 @@ import { Article, Tag } from '../types';
 import { AdSenseBanner } from './AdSenseBanner';
 import { api } from '../services/api';
 import { NavLink } from './NavLink';
+import AdUnit from "../components/AdUnit";
+
 
 interface SidebarProps {
   articles: Article[];
@@ -91,7 +93,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </div>
 
       {/* AdSense Sidebar Slot (300x250) */}
-      <AdSenseBanner format="sidebar" showAds={showAds} />
+      <AdUnit />
 
       {/* Popular Posts */}
       <div className="bg-white dark:bg-slate-800/80 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
