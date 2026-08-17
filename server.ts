@@ -629,6 +629,7 @@ app.get('/robots.txt', (req, res) => {
 Allow: /
 Disallow: /admin/
 Disallow: /api/
+Disallow: /search
 
 Sitemap: ${baseUrl}/sitemap.xml
 `;
