@@ -2251,7 +2251,237 @@ Click **Generate Video** and allow Runway's GPU server farm to process your requ
 - [ ] Set Structural Consistency between 6.0 and 8.0.
 - [ ] Render, upscale to 4K, and download final MP4.
 `
-  }
+  },
+  // 28. How-To: Hajj 2027 Government Employee Guide
+  {
+    id: 'art-28',
+    title: 'How to Apply for Hajj 2027 as a Government Employee in Pakistan',
+    slug: 'how-to-apply-for-hajj-2027-government-employee-pakistan',
+    excerpt: 'A step-by-step guide for Pakistani government employees on registering for Hajj 2027 under the Government Hajj Scheme, including the new Hajj Policy 2027-2030, required documents, and departmental leave/NOC rules.',
+    featuredImage: '/hajj-2027-government-employee-guide.png',
+    imageCaption: 'Step-by-step process for Hajj 2027 registration under the Government Hajj Scheme (Ministry of Religious Affairs & Interfaith Harmony)',
+    category: 'how-to',
+    tags: ['Hajj 2027', 'Government Scheme', 'Pakistan', 'Travel'],
+    author: authorsList[2],
+    publishedAt: '2026-08-18T08:00:00Z',
+    updatedAt: '2026-08-18T08:00:00Z',
+    status: 'published',
+    readingTimeMinutes: 9,
+    views: 0,
+    likes: 0,
+    isFeatured: false,
+    isTrending: true,
+    metaTitle: 'How to Apply for Hajj 2027 as a Government Employee (Pakistan) — Guide',
+    metaDescription: 'Step-by-step guide for Pakistani government employees applying for Hajj 2027: Government Hajj Scheme registration, required documents, payment, and NOC/leave rules.',
+    faqs: [
+      {
+        question: 'Can a government employee apply for Hajj 2027?',
+        answer: 'Yes. A government employee can apply under the Government Hajj Scheme if they meet the applicable requirements.'
+      },
+      {
+        question: 'Is there a separate Hajj quota automatically reserved for government employees?',
+        answer: 'No, government employment does not by itself guarantee a separate quota. The Government Hajj Scheme is the relevant scheme, and any special reserved category must be specifically announced by the authorities.'
+      },
+      {
+        question: 'Is Hajj 2027 registration free?',
+        answer: 'The Ministry announced that the initial Hajj 2027 registration is free. Hajj dues and installments are separate and must be paid according to the official Government Hajj Scheme instructions.'
+      },
+      {
+        question: 'Can I register without a passport?',
+        answer: 'At the launch of Hajj 2027 registration, the Religious Affairs Minister stated that initial registration could be completed without a passport, but a valid passport meeting the required validity period is necessary for the Hajj process and travel.'
+      },
+      {
+        question: 'Does registration guarantee a Hajj seat?',
+        answer: 'No. Registration should not be treated as a guarantee of final Hajj selection — it places you in the registration/waiting-list system, with final selection depending on quota and procedure.'
+      }
+    ],
+    content: `
+If you are a government employee in Pakistan and planning to perform **Hajj 2027**, you do not normally apply through a separate Hajj system just because you work for the government. You must complete the official Hajj registration process and select the applicable **Government Hajj Scheme**, while also following your department's rules for leave and permission.
+
+Pakistan has introduced its first multi-year **Hajj Policy and Plan 2027–2030**, replacing the previous approach of preparing a separate policy every year. The new framework allows intending pilgrims to register for a future Hajj year and introduces a priority waiting-list mechanism.
+
+![Step-by-step infographic showing how a Pakistani government employee applies for Hajj 2027, from online registration to pre-Hajj preparation](/hajj-2027-government-employee-guide.png)
+
+## Is Hajj 2027 Registration Open?
+
+Yes. The Ministry of Religious Affairs and Interfaith Harmony launched Hajj 2027 registration on **June 22, 2026**.
+
+The Ministry says registration is mandatory for people intending to perform Hajj under Pakistan's quota. Registration is available through the official online Hajj system and the **Pak Hajj** mobile application. The initial registration itself is free.
+
+The Ministry's latest Hajj news page also lists a **Hajj 2027 advertisement dated August 15, 2026**, covering Hajj applications and the first and second installment details.
+
+## Can Government Employees Apply for Hajj 2027?
+
+Yes. A government employee can apply under the **Government Hajj Scheme**, provided they meet the applicable requirements.
+
+However, government employment does **not automatically guarantee a Hajj seat**. Selection and accommodation depend on the Government Hajj Scheme, available quota and the procedures established under the Hajj policy.
+
+The new policy provides separate arrangements for the Government and Private Hajj Schemes.
+
+If you work for a federal, provincial or other public-sector organization, you should also check your department's rules regarding Hajj leave, NOC or prior approval.
+
+## Step-by-Step: How to Apply for Hajj 2027
+
+### 1. Complete Your Hajj Pre-Registration
+
+The first step is to register through the official Hajj Management System.
+
+The Ministry's registration portal asks for information such as:
+
+- Full name
+- CNIC number
+- Email address
+- Mobile number
+- Password and account information
+
+The official portal is operated for the Ministry of Religious Affairs and Interfaith Harmony.
+
+### 2. Select the Government Hajj Scheme
+
+During the applicable application process, intending pilgrims can choose between the Government Hajj Scheme and the Private Hajj Scheme.
+
+If you want to travel through the government-arranged Hajj program, select the **Government Hajj Scheme** when completing the relevant application.
+
+The government has already reported hundreds of thousands of registrations for Hajj 2027–2030, with a substantial majority opting for the Government Hajj Scheme.
+
+### 3. Make Sure Your Passport Meets the Requirement
+
+A valid Pakistani passport is required for Hajj travel.
+
+When the registration process was launched, the Religious Affairs Minister stated that applicants would need a passport valid until at least **November 26, 2027**. Importantly, he also said that applicants could complete the initial registration without already having the passport in hand.
+
+Because passport requirements can be updated during the Hajj operation, applicants should verify the latest requirement before submitting their final application.
+
+### 4. Complete the Hajj Application and Payment Requirements
+
+Registration and the actual Hajj application/payment stage should not be confused.
+
+The initial registration was announced as **free**, while Hajj dues are handled separately according to the Government Hajj Scheme's announced schedule.
+
+Under the 2027–2030 policy, a pilgrim who deposits **10% of the estimated Hajj cost applicable after registration** can be moved from the registration list to the waiting list.
+
+The exact amount you must pay should be taken from the latest Ministry advertisement rather than an old Hajj article or social-media post.
+
+### 5. Keep Your Application Information Safe
+
+After completing the process, save:
+
+- Application/reference number
+- Registration details
+- Payment receipts
+- Screenshots of submitted information
+- Passport and CNIC details
+- Any official correspondence from the Ministry
+
+This can make it easier to resolve a problem if your application information needs to be checked later.
+
+## What Documents Should Government Employees Prepare?
+
+Applicants should keep their important documents ready before the final application stage.
+
+These may include:
+
+- Valid Pakistani CNIC
+- Valid Pakistani passport
+- Recent photographs where required
+- Medical documentation required by the Ministry
+- Hajj payment receipts
+- Family-related documents where applicable
+- Mahram-related documentation where applicable
+- Departmental leave or NOC documents, if required
+
+The final document requirements should always be confirmed from the official Hajj 2027 instructions because Saudi and Pakistani requirements can change.
+
+## Do Government Employees Need Hajj Leave or an NOC?
+
+This is where government employees have an additional responsibility.
+
+Being registered or selected for Hajj does **not automatically mean that your department has approved your absence from work**.
+
+Before finalizing your travel arrangements, contact your:
+
+- HR section
+- Administration branch
+- Head of department
+- Competent authority
+
+Ask whether you need:
+
+- Hajj leave
+- Earned leave
+- Special leave
+- No Objection Certificate (NOC)
+- Departmental approval
+- Any other service-related documentation
+
+The exact procedure can vary between departments and provincial or federal organizations, so it should not be presented as one universal rule for every government employee.
+
+## What Is New About Hajj 2027?
+
+The biggest change is the new **Hajj Policy and Plan 2027–2030**.
+
+Instead of requiring intending pilgrims to start from scratch every year, the policy provides a multi-year framework under which people can register for a Hajj season up to 2030.
+
+The government has also introduced a priority waiting-list concept. According to the policy, applicants who deposit 10% of the applicable estimated Hajj cost after registration can move from the registration list to the waiting list.
+
+The policy also includes:
+
+- Digital Hajj management
+- Digital payment mechanisms
+- Digital complaint handling
+- Digital monitoring
+- Government and private Hajj schemes
+- Long- and short-duration Hajj programs
+- Mandatory pilgrim training
+- Takaful arrangements
+- Emergency response arrangements
+
+These reforms are intended to make Hajj planning and administration more systematic over the four-year policy period.
+
+## Is the Government Hajj Scheme First-Come, First-Served?
+
+The **registration** process has been described by the Ministry as first-come, first-served, and registration is mandatory for Hajj applicants.
+
+However, this should not be interpreted as meaning that simply registering guarantees a Hajj seat.
+
+The policy also establishes registration and waiting-list mechanisms, while the number of pilgrims that can travel depends on the available arrangements and quota.
+
+Therefore, applicants should complete registration early but should not assume that registration alone equals final selection.
+
+## Hajj 2027 Government Scheme: What Should Employees Do Now?
+
+If you are a government employee planning Hajj 2027, the practical approach is:
+
+1. Complete your official Hajj registration.
+2. Select the Government Hajj Scheme when required.
+3. Make sure your CNIC and personal information are correct.
+4. Check your passport validity.
+5. Follow the latest Hajj payment instructions.
+6. Keep all receipts and application records.
+7. Contact your department about Hajj leave or NOC requirements.
+8. Monitor the Ministry's official announcements for medical, training, biometric and travel instructions.
+
+## Avoid Unofficial Hajj Websites and Payment Requests
+
+This is particularly important because Hajj-related scams can involve fake registration pages, agents and payment requests.
+
+Use the **Ministry of Religious Affairs and Interfaith Harmony** website and its official Hajj Management System for registration and information.
+
+## Final Verdict
+
+For a Pakistani government employee, applying for **Hajj 2027** is primarily an official Hajj registration and Government Hajj Scheme process — not a separate application created solely for government workers.
+
+The most important development is Pakistan's new **Hajj Policy and Plan 2027–2030**, which introduces multi-year registration, a priority waiting list and greater use of digital systems.
+
+If you are planning to perform Hajj in 2027, complete your official registration, keep your passport and documents ready, follow the Ministry's payment instructions, and separately obtain whatever leave or departmental approval your employer requires.
+
+**Always verify the latest Hajj 2027 announcement before paying any money**, because payment deadlines, package costs, documentation and operational instructions can change during the Hajj preparation period.
+
+---
+
+**[Click for apply →](https://hajj.mora.gov.pk/register?utm_source=chatgpt.com)**
+`
+  },
 ];
 
 
