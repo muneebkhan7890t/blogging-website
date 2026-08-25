@@ -13,6 +13,16 @@ import {
 import { Article, Category, Tag, Comment, NewsletterSubscriber, ContactMessage } from './src/types.js';
 import { renderPageHtml } from './src/server/htmlRenderer.js';
 
+console.log('[boot] server.cjs loaded, NODE_ENV=', process.env.NODE_ENV, 'PORT env=', process.env.PORT);
+
+process.on('uncaughtException', (err) => {
+  console.error('[FATAL] Uncaught exception:', err);
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.error('[FATAL] Unhandled rejection:', reason);
+});
+
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
@@ -698,9 +708,15 @@ async function startServer() {
     }
   });
 
-  app.listen(PORT, '0.0.0.0', () => {
+  const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`EarnInfo SEO Server running at http://0.0.0.0:${PORT}`);
+  });
+
+  server.on('error', (err) => {
+    console.error('[FATAL] Server failed to bind/listen:', err);
   });
 }
 
-startServer();
+startServer().catch((err) => {
+  console.error('[FATAL] startServer() threw during startup:', err);
+});
