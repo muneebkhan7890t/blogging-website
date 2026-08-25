@@ -2758,6 +2758,188 @@ Getting a job at Google from Pakistan is possible, but it depends far more on ma
 ### [Apply Now on Official Google Careers →](https://www.google.com/about/careers/applications/jobs/results)
 `
   },
+  // 30. Tutorials: USA F-1 Visa, I-20 & SEVIS Process
+  {
+    id: 'art-30',
+    title: 'How to Get a USA Student Visa: I-20, SEVIS, DS-160',
+    slug: 'how-to-get-usa-student-visa-i20-sevis-ds160',
+    excerpt: 'A neutral, step-by-step explanation of the real US F-1 student visa process, with Pakistan-specific details on embassy locations, MRV fee payment, HEC attestation, and common visa refusal reasons — based only on official government sources.',
+    featuredImage: '/usa-f1-visa-i20-sevis-process-guide.png',
+    imageCaption: 'The official F-1 student visa pathway: university admission → Form I-20 → I-901 SEVIS fee → DS-160 → visa interview appointment → F-1 interview.',
+    category: 'tutorials',
+    tags: ['Study Abroad', 'F-1 Visa', 'USA', 'Pakistan', 'DAAD Scholarship'],
+    author: authorsList[0],
+    publishedAt: '2026-08-24T12:00:00Z',
+    updatedAt: '2026-08-25T12:00:00Z',
+    status: 'published',
+    readingTimeMinutes: 11,
+    views: 0,
+    likes: 0,
+    isFeatured: false,
+    isTrending: false,
+    metaTitle: 'How to Get a USA Student Visa: I-20, SEVIS, DS-160',
+    metaDescription: 'Step-by-step guide to getting a USA student visa from Pakistan: Form I-20, SEVIS fee, DS-160, MRV payment at Allied Bank, HEC attestation & interview tips.',
+    faqs: [
+      {
+        question: 'Who actually issues the Form I-20?',
+        answer: 'Only a Student and Exchange Visitor Program (SEVP)-certified school can issue a Form I-20, through its designated school official (DSO), after you have been admitted and have met the school\'s admission and financial requirements. No outside company, agent, or consultant can issue an I-20 on a school\'s behalf.'
+      },
+      {
+        question: 'How much is the SEVIS I-901 fee, and where do I pay it?',
+        answer: 'For F-1 students, the I-901 SEVIS fee is $350. It is paid directly to the Department of Homeland Security through the official portal at fmjfee.com, or by mail or Western Union Quick Pay. It is separate from any university application fee or the visa application fee.'
+      },
+      {
+        question: 'What is the DS-160 and does it cost anything to file?',
+        answer: 'The DS-160 is the Department of State\'s Online Nonimmigrant Visa Application, completed at ceac.state.gov. There is no fee to file the DS-160 itself, but you must separately pay the nonimmigrant visa application (MRV) fee, $185 for F-1 applicants as of 2026, before you can schedule your interview.'
+      },
+      {
+        question: 'Does having a Form I-20 or a paid SEVIS fee guarantee a visa?',
+        answer: 'No. An I-20 makes you eligible to apply for an F-1 visa, and the SEVIS fee is a required payment, but neither one guarantees visa approval. The consular officer at your interview makes the final decision, based on your documentation and eligibility under U.S. law.'
+      },
+      {
+        question: 'How do I know if a university is SEVP-certified?',
+        answer: 'Use the official School Search tool on Study in the States (studyinthestates.dhs.gov) to search by school name or location and confirm SEVP certification before applying or paying any fees.'
+      },
+      {
+        question: 'Where do Pakistani applicants pay the MRV fee?',
+        answer: 'In Pakistani Rupees at designated Allied Bank of Pakistan branches, not by international card on a third-party website. Check the current bank list and payment steps at ustraveldocs.com/pk before paying, and keep your receipt for scheduling and your interview.'
+      },
+      {
+        question: 'Do Pakistani students need HEC attestation before applying?',
+        answer: 'Many universities and the visa process expect verified academic documents. Bachelor\'s and Master\'s degrees and transcripts go through HEC (Higher Education Commission) attestation; Matric (SSC) and Intermediate (HSSC) certificates go through IBCC attestation instead. Start this early, since it runs on a separate timeline from your university application.'
+      }
+    ],
+    content: `
+Every year, thousands of Pakistani students research how to study in the United States, and the process can feel confusing because it involves several different agencies: your university, the Department of Homeland Security (DHS), and the U.S. Department of State. This guide walks through the real, official F-1 student visa process step by step, using only information published by SEVP (Study in the States), ICE, and the Department of State. It does not promote or endorse any paid consultant, agency, or "assistance service" — everything below is a step you can complete yourself, directly through free or fixed-cost government systems.
+
+![The official F-1 student visa pathway: university admission, Form I-20, I-901 SEVIS fee, DS-160, visa interview appointment, and F-1 interview](/usa-f1-visa-i20-sevis-process-guide.png)
+
+---
+
+## The Official F-1 Pathway at a Glance
+
+The process always follows the same order:
+
+**University Admission → Form I-20 → I-901 SEVIS Fee → DS-160 → Visa Interview Appointment → F-1 Visa Interview**
+
+Each step depends on the one before it — you cannot pay the SEVIS fee before you have an I-20, and you cannot schedule an interview before you've paid the visa application fee. There is no legitimate way to skip steps or "fast-track" the sequence by paying a third party.
+
+---
+
+## Step 1: Get Admitted to an SEVP-Certified School
+
+Only schools certified by the Student and Exchange Visitor Program (SEVP) are authorized to enroll F-1 students and issue a Form I-20. Before applying anywhere, or paying anyone, confirm a school's certification using the official **School Search tool** on Study in the States (studyinthestates.dhs.gov). You apply directly to the university itself — through its own admissions office — by meeting its academic, English-language, and financial requirements.
+
+Be cautious of any organization that claims to be "affiliated" with an unnamed U.S. university, or that asks for a large fee before telling you exactly which SEVP-certified school you'd be admitted to. Legitimate universities publish their own admission requirements and application fees directly on their official websites.
+
+---
+
+## Step 2: Receive Your Form I-20
+
+Once you're admitted and have satisfied the school's requirements, the school's designated school official (DSO) issues your **Form I-20, "Certificate of Eligibility for Nonimmigrant Student Status."** Key facts about the I-20, straight from Study in the States:
+
+- Only the SEVP-certified school that admitted you can issue your I-20 — never a third-party agent.
+- You and your DSO must both sign it (a parent must also sign if you're under 18).
+- It lists your program start date; you may enter the U.S. up to 30 days before that date.
+- You must bring the original, signed I-20 to your visa interview and keep it with you (not packed away) when you enter the country.
+- An I-20 is **not** a visa — it's the document that makes you eligible to apply for one.
+
+---
+
+## Step 3: Pay the I-901 SEVIS Fee
+
+Before you can be issued a visa, you must pay the mandatory **I-901 SEVIS fee**, which funds the Student and Exchange Visitor Information System. For F-1 students, this fee is **$350**.
+
+- Pay it only through the official portal, **fmjfee.com**, or by mail or Western Union Quick Pay following ICE's official instructions.
+- You'll need your SEVIS ID and school code from your Form I-20 to complete payment.
+- Print or save your payment confirmation — you must present it at your visa interview.
+- SEVP has warned that scammers sometimes call students claiming to collect SEVIS fees over the phone and demand payment through unofficial channels. The government will never call you to request this fee — pay it only at fmjfee.com.
+
+---
+
+## Step 4: Complete the DS-160
+
+The **DS-160, "Online Nonimmigrant Visa Application,"** is the Department of State's official visa application form. Complete it only at the official CEAC website:
+
+**https://ceac.state.gov/GenNIV/Default.aspx**
+
+- It takes roughly 90 minutes; save your progress often, since the session can time out.
+- There's no fee to submit the DS-160 itself, but you must separately pay the nonimmigrant visa application (MRV) fee — **$185** for F-1 applicants as of 2026 — before you can schedule your interview.
+- You must personally sign and submit your own application electronically, even if someone helped you fill it in.
+- Save your confirmation page and its barcode number; it must exactly match the number you use to book your interview.
+
+---
+
+## Step 5: Schedule and Attend Your F-1 Visa Interview
+
+After paying the MRV fee, you can schedule your interview through the appointment system for the U.S. Embassy or Consulate where you're applying. Scheduling steps and required documents vary slightly by location, so always check the current instructions on your local embassy's official website (usembassy.gov) before booking or paying anything.
+
+Documents you'll typically need to bring:
+
+- Valid passport (valid at least 6 months beyond your intended travel)
+- DS-160 confirmation page with your application ID
+- Original, signed Form I-20
+- I-901 SEVIS fee payment receipt
+- MRV visa fee payment receipt
+- Financial documents proving you can cover tuition and living expenses
+- Evidence supporting your intent to return home after your studies
+
+At the interview, a consular officer reviews your documents and SEVIS record and makes the final decision. **No document, fee, or third party can guarantee visa approval** — this decision is made solely by the U.S. government.
+
+---
+
+## Notes for Pakistani Applicants
+
+A few parts of this process work slightly differently for applicants in Pakistan, based on official U.S. Mission Pakistan and HEC guidance:
+
+**Where you apply.** F-1 (and J-1) visa applications are handled by both the **U.S. Embassy in Islamabad** and the **U.S. Consulate General in Karachi**, and both posts prioritize student and exchange visitor cases. You choose which one to schedule your interview at when you book your appointment.
+
+**How to pay the MRV fee in Pakistan.** The $185 MRV fee is paid in Pakistani Rupees at designated **Allied Bank of Pakistan** branches (check the current bank list and process at ustraveldocs.com/pk before paying), not by international card on a foreign site. Keep your receipt — you'll need it to schedule your interview and to bring to your appointment. The fee is valid for 365 days from the receipt date, and it's non-refundable even if your visa is refused.
+
+**A new fee to watch for.** A separate $250 "Visa Integrity Fee" was signed into law in 2025 and applies to most nonimmigrant categories, including F-1. As of mid-2026 it is being collected **at visa issuance**, not before the interview, and rollout has varied by post — so you may or may not see it charged depending on when you apply. It does not replace the SEVIS or MRV fees; confirm the current status at travel.state.gov before budgeting.
+
+**HEC attestation for your academic documents.** Many U.S. universities and the visa process itself may expect your Pakistani degree, transcripts, or certificates to be verified. Bachelor's and Master's-level degrees and transcripts go through **HEC attestation** (Higher Education Commission); Matric (SSC) and Intermediate (HSSC) certificates instead go through **IBCC attestation**. As of mid-2026, HEC has moved to a fully online attestation system — start this early, since processing times vary and it's a separate track from your university application.
+
+**Addressing "intent to return" (Section 214(b)).** The most common reason F-1 applicants worldwide, including from Pakistan, are refused is that the consular officer isn't convinced the applicant intends to return home after their studies. There's no document that automatically overcomes this — officers weigh your specific ties (family, property, a job or business you'd return to, clear post-study plans) and how clearly and consistently you explain them in the interview. Be honest and specific rather than relying on a scripted answer.
+
+---
+
+## A Note on Costs and Third Parties
+
+The only mandatory government fees in this process are the I-901 SEVIS fee ($350) and the MRV visa application fee ($185 for F-1). Any legitimate university application fee is set and published by that university directly. If you choose to use an education consultant or agent, understand exactly what service you're paying for, confirm independently (via the SEVP School Search tool) that any school named is genuinely SEVP-certified, and never let a private company be your only source of information about your I-20, SEVIS record, or visa status — that information is always available to you directly from your school's DSO and the official government portals above.
+
+---
+
+## Frequently Asked Questions
+
+**Who actually issues the Form I-20?**
+Only your SEVP-certified school's DSO, after admission and after you meet the school's requirements.
+
+**Is the SEVIS fee the same as the visa fee?**
+No — they're two separate government payments: $350 (I-901 SEVIS fee) and $185 (MRV visa application fee) for F-1 students.
+
+**Does an I-20 guarantee a visa?**
+No. It makes you eligible to apply; the consular officer decides.
+
+**Where do Pakistani applicants pay the MRV fee?**
+In Pakistani Rupees at designated Allied Bank of Pakistan branches — not by international card on a third-party site. Confirm the current bank list at ustraveldocs.com/pk.
+
+**Do I need HEC attestation before applying?**
+Many universities and the visa process expect verified academic documents. Bachelor's and Master's degrees/transcripts go through HEC attestation; Matric and Intermediate certificates go through IBCC attestation instead. Start this early since it's a separate process from your university application.
+
+---
+
+## Official Sources Referenced
+
+- Study in the States (studyinthestates.dhs.gov) — Form I-20, SEVP certification, School Search
+- U.S. Immigration and Customs Enforcement, ICE.gov — I-901 SEVIS fee
+- U.S. Department of State, travel.state.gov and ceac.state.gov — DS-160, visa interview process, visa fees
+- U.S. Embassy Islamabad & Consulate General Karachi, pk.usembassy.gov and ustraveldocs.com/pk — Pakistan-specific application, fee payment, and interview scheduling
+- Higher Education Commission of Pakistan, hec.gov.pk — degree attestation
+
+Always verify current requirements, fees, and instructions directly on these official sites before submitting documents or making payments.
+`
+  },
 ];
 
 
