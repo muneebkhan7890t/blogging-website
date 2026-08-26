@@ -2946,7 +2946,7 @@ Always verify current requirements, fees, and instructions directly on these off
     title: 'How to Apply for PIA Cabin Crew Jobs 2026: Full Guide',
     slug: 'how-to-apply-pia-cabin-crew-jobs-2026',
     excerpt: 'A complete, fact-checked guide to PIA Cabin Crew Jobs 2026 — eligibility, the online application process, required documents, selection stages, and interview preparation, with a warning about recruitment scams.',
-    featuredImage: '',
+    featuredImage: '/PIA.png',
     imageCaption: '',
     category: 'tutorials',
     tags: ['PIA Jobs', 'Cabin Crew', 'Jobs Pakistan', 'Career Guide'],
@@ -3185,7 +3185,7 @@ A PIA cabin crew role is a genuine opportunity for eligible Pakistani candidates
 
 To apply, visit PIA's official recruitment channel and look for the current Cabin Crew vacancy:
 
-**https://www.piac.com.pk/careers**
+**https://www.surveymonkey.com/r/QNM8636**
 
 Always verify the vacancy, eligibility details, and application instructions directly on PIA's official website before submitting any personal information or documents, and never share sensitive documents or make any payment to a third party claiming to secure your selection.
 `
