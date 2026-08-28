@@ -74,7 +74,7 @@ export const initialCategories: Category[] = [
     description: 'Step-by-step guides, education scholarship application walkthroughs, and practical technical tutorials.',
     icon: 'BookOpen',
     color: 'from-teal-500 to-emerald-700',
-    count: 4
+    count: 5
   },
   {
     id: 'cat-8',
@@ -123,7 +123,13 @@ export const initialTags: Tag[] = [
   { id: 'tag-24', name: 'DAAD Scholarship', slug: 'daad-scholarship' },
   { id: 'tag-25', name: 'Gifts & Shopping', slug: 'gifts-shopping' },
   { id: 'tag-26', name: 'Edge AI', slug: 'edge-ai' },
-  { id: 'tag-27', name: 'Startups', slug: 'startups' }
+  { id: 'tag-27', name: 'Startups', slug: 'startups' },
+  { id: 'tag-28', name: 'Umrah', slug: 'umrah' },
+  { id: 'tag-29', name: 'Travel Guide', slug: 'travel-guide' },
+  { id: 'tag-30', name: 'Pakistan', slug: 'pakistan' },
+  { id: 'tag-31', name: 'Saudi Arabia', slug: 'saudi-arabia' },
+  { id: 'tag-32', name: 'Nusuk', slug: 'nusuk' },
+  { id: 'tag-33', name: 'Visa Guide', slug: 'visa-guide' }
 ];
 
 export const initialArticles: Article[] = [
@@ -3582,6 +3588,265 @@ Germany offers several real immigration pathways for qualified international wor
 - **Germany Visa Navigator** — https://visa-navigator.diplo.de/
 
 Always verify current requirements, salary thresholds, and application procedures directly through these official sources before making any decisions or payments.
+`
+  },
+  {
+    id: 'art-umrah-without-agent-2026',
+    title: 'How to Apply for Umrah Without an Agent in 2026 – Complete Step-by-Step Guide',
+    slug: 'how-to-apply-for-umrah-without-an-agent-2026',
+    excerpt: 'A practical, fact-checked guide for Pakistani travelers on independently arranging Umrah — visas, flights, hotels, and transport — with links to the official Nusuk, Saudi eVisa, and Ministry of Religious Affairs platforms.',
+    featuredImage: '/umrah-without-agent-guide-2026.png',
+    imageCaption: 'Step-by-step infographic: how to plan Umrah independently, from visa to return flight',
+    category: 'tutorials',
+    tags: ['Umrah', 'Travel Guide', 'Pakistan', 'Saudi Arabia', 'Nusuk', 'Visa Guide'],
+    author: authorsList[0],
+    publishedAt: '2026-08-28T08:00:00Z',
+    updatedAt: '2026-08-28T08:00:00Z',
+    status: 'published',
+    readingTimeMinutes: 12,
+    views: 0,
+    likes: 0,
+    isFeatured: false,
+    isTrending: true,
+    metaTitle: 'Umrah Without an Agent 2026: Complete Step-by-Step Guide',
+    metaDescription: 'Learn how to apply for Umrah without an agent in 2026 — visa routes, official Nusuk links, flights, hotels, transport, and a realistic cost breakdown for travelers from Pakistan.',
+    canonicalUrl: '',
+    faqs: [
+      {
+        question: 'Can I apply for Umrah without an agent?',
+        answer: 'You can independently book your flights, hotels, transport, and manage most of your trip yourself. The visa itself may still need to go through an authorized channel depending on your nationality and current Saudi regulations.'
+      },
+      {
+        question: 'Can Pakistanis perform Umrah without a travel agent?',
+        answer: 'Pakistanis can independently handle flights, hotels, and transport. For the visa, most applicants currently still need it processed through a Pakistani Umrah operator attested by the Ministry of Religious Affairs, even though the underlying system (Nusuk) is digital.'
+      },
+      {
+        question: 'How much does Umrah cost without an agent?',
+        answer: 'It varies by season, airline, and hotel choice, but a rough independent budget for a solo traveler from Pakistan commonly falls between PKR 150,000 and 350,000+ for a 7-10 day trip.'
+      },
+      {
+        question: 'Can I book my own hotel in Makkah?',
+        answer: 'Yes, directly through hotel websites or trusted booking platforms, though if your visa route requires a Nusuk-linked booking, confirm the hotel is bookable through an approved channel.'
+      },
+      {
+        question: 'Can I book my own flight for Umrah?',
+        answer: 'Yes, flights are entirely independent of your visa provider — book through any airline or travel booking site.'
+      },
+      {
+        question: 'Do I need Nusuk?',
+        answer: 'Depending on current regulations, you may need Nusuk for permits and, for many Pakistani travelers, your visa may be processed through the Nusuk system by your attested operator.'
+      },
+      {
+        question: 'How long does an Umrah visa take?',
+        answer: 'Processing times vary by season and application volume; check current estimated timelines on the platform you\'re applying through.'
+      },
+      {
+        question: 'Can I perform Umrah using another Saudi visa?',
+        answer: 'Yes, a Saudi tourist eVisa, personal visit visa, or certain other visa types can permit Umrah (though not Hajj), depending on your nationality and the visa conditions.'
+      },
+      {
+        question: 'Is independent Umrah cheaper than a package?',
+        answer: 'Sometimes, but not always. Off-peak independent bookings can be cheaper, while peak-season independent bookings can cost more than a well-priced package.'
+      }
+    ],
+    content: `
+**Last Updated: August 2026**
+
+Umrah is the "lesser pilgrimage" to Makkah — a set of rituals (Ihram, Tawaf, Sa'i, and Halq or Taqsir) that Muslims can perform at any time of the year, unlike Hajj, which is fixed to specific dates. Every year, hundreds of thousands of Pakistanis travel to Saudi Arabia for Umrah, and a growing number want to know whether they can arrange the trip themselves instead of buying a fixed package from a travel agent.
+
+The short answer: yes, a lot of the journey can be arranged independently — your flights, your hotels, your transport, and your day-to-day plan. But the **visa itself** still works differently for Pakistani passport holders than it does for some other nationalities, and that's a detail most generic guides gloss over. This guide walks through exactly what you can do yourself, what still needs to go through an authorized channel, and where to apply from Pakistan using official links only.
+
+Visa and entry rules for Saudi Arabia change from time to time, so before you pay for anything, always cross-check the latest requirements on the official government platforms linked throughout this article.
+
+## Why Travelers Prefer Arranging Umrah Themselves
+
+* **Flexibility** – you choose your own travel dates, flight times, and how long to stay in Makkah versus Madinah.
+* **Transparency** – you know exactly what you're paying for at each step (visa, flight, hotel, transport) instead of one bundled package price.
+* **Potential cost savings** – you can compare prices across airlines and hotels yourself instead of paying a package markup, though this isn't guaranteed (more on that below).
+* **Control over accommodation** – you pick the hotel, distance from Masjid al-Haram, and room type that suits your budget and group.
+
+## Can You Perform Umrah Without an Agent?
+
+Independent Umrah planning is possible, and Saudi Arabia has been actively pushing pilgrims toward self-service digital tools through its official **Nusuk Umrah** platform ([umrah.nusuk.sa](https://umrah.nusuk.sa/)), which lets international Muslims book visas, hotels, transport, and Rawdah/Umrah permits online without going through a travel company.
+
+There's an important nuance for Pakistani travelers, though: eligibility for *direct* Nusuk visa applications depends on your nationality and Saudi Arabia's current regulations for your country. As of this writing, most Pakistani passport holders still need their Umrah visa issued through a Pakistani Umrah tour operator that is officially attested by Pakistan's **Ministry of Religious Affairs and Interfaith Harmony (MoRA)** — that operator submits the visa request on the backend of the Nusuk system on your behalf. This is different from booking a full holiday package; the operator's role here is narrower (visa processing), and you remain free to book your own flights, hotels, and transport independently.
+
+Because Saudi Arabia periodically expands Nusuk's direct-application eligibility to more nationalities, always check the [official Nusuk Umrah platform](https://umrah.nusuk.sa/) yourself before assuming you need — or don't need — a local operator for the visa step.
+
+## Step 1 – Check Your Umrah Visa Eligibility
+
+Before booking anything, confirm which route applies to you:
+
+| Route | Who it's typically for | Where to apply |
+|---|---|---|
+| Saudi Tourist eVisa (permits Umrah, excludes Hajj) | Eligible nationalities, or travelers holding a valid US, UK, or Schengen visa/residency | [Official Saudi eVisa portal](https://visa.visitsaudi.com/) |
+| Umrah visa via Nusuk-registered Pakistani operator | Most Pakistani passport holders currently | A MoRA-attested operator, verified on [mora.gov.pk](https://www.mora.gov.pk/) |
+| Direct Nusuk Umrah visa | Nationalities Saudi Arabia has opened direct access to | [umrah.nusuk.sa](https://umrah.nusuk.sa/) |
+
+Nationality-specific rules change, so treat this table as a starting point, not a final answer. Confirm your exact route on the official platforms above before paying for flights or hotels.
+
+## Step 2 – Prepare Required Documents
+
+Commonly requested documents include:
+
+* A valid passport with at least six months' validity remaining
+* Recent passport-size photographs (if requested)
+* Visa application information (personal details, travel dates)
+* Confirmed accommodation details (hotel booking reference)
+* Confirmed flight details, where required
+* Travel/health insurance, where required
+* Proof of financial means, if requested
+* Any additional documents specific to your nationality or current Saudi regulations
+
+Saudi Arabia has also been enforcing a "no booking, no visa" approach in recent seasons, meaning your visa application may need to be linked to a confirmed hotel and transport booking reference before it's approved. Confirm current document requirements on the official portal you're applying through.
+
+## Step 3 – Apply for the Visa Online
+
+1. Go to the correct official portal for your route (see the table in Step 1) — never a random third-party "visa agent" website.
+2. Create an account using a valid email address and phone number.
+3. Enter your passport and personal information exactly as it appears on your passport.
+4. Upload the requested documents (passport scan, photo, booking references).
+5. Pay the visa fee through the platform's official payment gateway.
+6. Review every field — spellings, passport number, date of birth, and travel dates — before hitting submit. A single typo can delay or invalidate your visa.
+7. Save your application reference number and any confirmation emails.
+
+## Step 4 – Book Flights Yourself
+
+* Compare fares across multiple airlines and booking sites rather than settling on the first result.
+* Decide between round-trip and one-way tickets — round-trip is usually cheaper and simpler for visa purposes, since some visa types expect proof of return travel.
+* From Pakistan, common departure cities are Karachi, Lahore, and Islamabad, with direct or one-stop flights to Jeddah or Madinah on carriers like PIA, Saudia, and various Gulf carriers via a transit hub.
+* Check baggage allowance (Umrah travelers often carry Zamzam water and extra luggage on the return leg).
+* If your flight transits through another country, check whether that country requires a transit visa.
+* Read the cancellation and date-change policy before paying — Umrah travel dates sometimes shift due to visa processing time.
+* Decide your arrival airport: Jeddah (King Abdulaziz International Airport) is closer to Makkah, while Madinah's Prince Mohammad bin Abdulaziz Airport is a good option if you want to visit Madinah first.
+
+## Step 5 – Book Hotels in Makkah and Madinah
+
+* **Near Masjid al-Haram / Masjid an-Nabawi**: shorter walking distance, higher price, ideal for elderly travelers or those who want to maximize time in prayer.
+* **Farther from the Haram**: lower price, but you'll rely on walking longer distances or paying for taxis/shuttles multiple times a day.
+* Before booking, check: real guest reviews, exact walking distance (not just "near Haram" marketing), cancellation policy, room type and occupancy, and whether breakfast or shuttle service is included.
+* If your visa route requires a Nusuk-linked booking reference, confirm the hotel is bookable through a Nusuk-approved channel so your reservation is recognized for visa purposes.
+
+## Step 6 – Understand Nusuk and Umrah Arrangements
+
+**Nusuk** (nusuk.sa and umrah.nusuk.sa) is the Saudi Ministry of Hajj and Umrah's official digital platform. Depending on current regulations, pilgrims may be required to use Nusuk to:
+
+* Book an Umrah permit / time slot before entering Masjid al-Haram
+* Book a Rawdah visit permit at Masjid an-Nabawi in Madinah
+* Link hotel and transport bookings to a visa application
+* Access official service providers for packages or individual services
+
+Requirements around permits can change between seasons, so don't assume a booking or permit is (or isn't) mandatory — check the [official Nusuk platform](https://umrah.nusuk.sa/) close to your travel dates.
+
+## Step 7 – Plan Transportation in Saudi Arabia
+
+| Option | Best for |
+|---|---|
+| Airport transfer (pre-booked or ride-hailing) | Arrival/departure convenience |
+| Haramain High-Speed Railway ([sar.hhr.sa](https://sar.hhr.sa/)) | Fast, comfortable travel between Makkah and Madinah (roughly 2–2.5 hours) |
+| Taxi / ride-hailing apps | Short trips within a city |
+| Intercity buses | Budget travel between cities |
+| Hotel shuttle | Trips to/from the Haram if your hotel is farther away |
+
+The Haramain train is generally the most practical way to move between Makkah and Madinah without an agent — you can book seats directly on the official Saudi Railways portal.
+
+## Step 8 – Estimate the Total Umrah Cost
+
+Prices below are **approximate, illustrative figures for a solo traveler from Pakistan** and will vary by season, airline, hotel class, exchange rate, and current government fees. Always get live quotes before budgeting.
+
+| Expense | Approximate Range (PKR) |
+|---|---|
+| Visa-related costs (processing/service fees) | 15,000 – 40,000 |
+| Round-trip flight (Karachi/Lahore/Islamabad to Jeddah or Madinah) | 90,000 – 220,000 |
+| Hotel (per night, budget to mid-range, per person sharing) | 3,000 – 12,000 |
+| Local transport (airport transfers, Haramain train, taxis) | 10,000 – 30,000 |
+| Food (per day) | 2,000 – 5,000 |
+| Travel/health insurance | 5,000 – 15,000 |
+| Local expenses (SIM card, water, Ihram, gifts) | 5,000 – 15,000 |
+| Emergency budget | 10,000+ |
+
+For a typical 7–10 day independent Umrah trip, total costs commonly fall somewhere in the range of PKR 150,000 to 350,000+ per person, depending heavily on flight timing and hotel choice. Treat this as a rough planning range, not a quote.
+
+## How Much Can You Save Without an Agent?
+
+Independent booking is **not automatically cheaper**. Travel agents buy flights and hotel rooms in bulk, so a well-negotiated package can sometimes beat what you'd pay booking each piece separately — especially during peak season when independent hotel rates spike.
+
+Where independent travelers tend to save:
+
+* Off-peak travel dates, where flight and hotel prices are lower if booked directly
+* Choosing a more basic hotel category than what's typically bundled into packages
+* Skipping services you don't need (guided tours, group transport) that packages often include
+
+Where an agent or package may offer better value:
+
+* Peak seasons (Ramadan, school holidays) when bulk-purchased rooms and flights are hard to match independently
+* First-time travelers who value having visa, hotel, and transport bundled and handled for them
+* Group travel, where package pricing per person often drops with group size
+
+## Best Time to Perform Umrah
+
+* **Ramadan** is the most spiritually significant and most crowded period — flights and hotels are priced at a premium and book out early.
+* **School and public holiday periods** in Pakistan and Saudi Arabia also see higher demand and prices.
+* **Off-peak months** outside Ramadan and major holidays generally offer lower fares, more hotel availability, and shorter queues at the Haram.
+* Exact crowd and pricing patterns shift year to year, so check current flight and hotel prices for your intended dates rather than relying on outdated seasonal assumptions.
+
+## Important Mistakes to Avoid
+
+* Using unofficial or unverified visa websites instead of the official Nusuk or eVisa portals
+* Paying money to unregistered "agents" who aren't on Pakistan's [MoRA-attested Umrah operator list](https://www.mora.gov.pk/)
+* Booking non-refundable hotels before your visa is confirmed
+* Entering incorrect passport numbers, names, or dates on the visa application
+* Ignoring your airline's baggage allowance, especially for the return trip
+* Not checking your visa's exact validity window and permitted length of stay
+* Assuming Nusuk or permit requirements are the same as last season without checking current rules
+* Booking a hotel "near the Haram" based on marketing claims without verifying the actual walking distance
+
+## Umrah Checklist
+
+* [ ] Valid passport (6+ months validity)
+* [ ] Visa applied for through the correct official channel
+* [ ] Flights booked (round-trip, baggage checked)
+* [ ] Hotel booked in Makkah and Madinah
+* [ ] Travel/health insurance arranged
+* [ ] Nusuk registration and any required permits sorted
+* [ ] Local transport plan (airport transfer, Haramain train)
+* [ ] Ihram and essential clothing packed
+* [ ] Personal medicines and toiletries packed
+* [ ] Photocopies/scans of passport, visa, and bookings saved separately
+
+## Frequently Asked Questions
+
+**Can I apply for Umrah without an agent?**
+You can independently book your flights, hotels, transport, and manage most of your trip yourself. The visa itself may still need to go through an authorized channel depending on your nationality and current Saudi regulations.
+
+**Can Pakistanis perform Umrah without a travel agent?**
+Pakistanis can independently handle flights, hotels, and transport. For the visa, most Pakistani applicants currently still need it processed through a Pakistani Umrah operator attested by the Ministry of Religious Affairs, even though the underlying system (Nusuk) is digital. Check [umrah.nusuk.sa](https://umrah.nusuk.sa/) for the latest eligibility for direct applications.
+
+**How much does Umrah cost without an agent?**
+It varies widely by season, airline, and hotel choice, but a rough independent budget for a solo traveler from Pakistan is commonly in the range of PKR 150,000–350,000+ for a 7–10 day trip. Get current quotes before finalizing your budget.
+
+**Can I book my own hotel in Makkah?**
+Yes. You can book directly through hotel websites or trusted booking platforms, though if your visa route requires a Nusuk-linked booking, make sure the hotel is bookable through an approved channel.
+
+**Can I book my own flight for Umrah?**
+Yes, flights are entirely independent of your visa provider — book through any airline or travel booking site.
+
+**Do I need Nusuk?**
+Depending on current regulations, you may need Nusuk for permits (Umrah time-slot booking, Rawdah visit) and, for many Pakistani travelers, your visa may be processed through the Nusuk system by your attested operator. Requirements can change, so check the official platform.
+
+**How long does an Umrah visa take?**
+Processing times vary by season and application volume; check current estimated timelines on the platform you're applying through rather than relying on a fixed number.
+
+**Can I perform Umrah using another Saudi visa?**
+Yes — a Saudi tourist eVisa, personal visit visa, or certain other visa types can permit Umrah (though not Hajj), depending on your nationality and the visa conditions. Confirm on the [official Saudi eVisa portal](https://visa.visitsaudi.com/).
+
+**Is independent Umrah cheaper than a package?**
+Sometimes, but not always. Off-peak, independently booked trips can be cheaper, while peak-season independent bookings can end up costing more than a well-priced package due to bulk hotel and flight rates agents can access.
+
+## Conclusion
+
+Travelers can genuinely arrange most of their Umrah journey independently — flights, hotels, local transport, and day-to-day planning are all things you can book yourself using official platforms. For Pakistani nationals specifically, the visa step still typically runs through a MoRA-attested Umrah operator working within the Nusuk system, so "without an agent" today mostly means cutting out the full travel-package model rather than the visa-processing role entirely. Before you pay for anything, verify the current requirements directly on the [Nusuk Umrah platform](https://umrah.nusuk.sa/), the [Saudi eVisa portal](https://visa.visitsaudi.com/), and Pakistan's [Ministry of Religious Affairs website](https://www.mora.gov.pk/), since visa rules and eligible routes are updated from time to time.
+
 `
   },
 ];
